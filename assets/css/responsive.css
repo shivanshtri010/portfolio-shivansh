@@ -1,0 +1,800 @@
+/* ============================================================
+   SHIVANSH TRIPATHI — PORTFOLIO
+   Responsive
+   ============================================================ */
+
+@media (max-width: 1240px) {
+  .nav__time {
+    display: none;
+  }
+  .hero__rail {
+    display: none;
+  }
+  .hero__bottom {
+    grid-template-columns: minmax(0, 1.2fr) auto;
+  }
+  .hero__scroll {
+    display: none;
+  }
+  .stack-row {
+    grid-template-columns: 36px minmax(120px, 0.95fr) minmax(140px, 0.8fr) minmax(0, 2fr) 32px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .brand__status {
+    display: none;
+  }
+  .about__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 40px;
+  }
+  .profile-card__badge--two {
+    display: none;
+  }
+  .experience__grid {
+    gap: 44px;
+  }
+  .project--feature {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}
+
+@media (max-width: 980px) {
+  .nav__links {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .nav__meta {
+    gap: 12px;
+  }
+  .nav__cta {
+    display: none;
+  }
+
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .section-head__intro {
+    justify-self: start;
+    max-width: 540px;
+    padding-top: 18px;
+  }
+
+  .project--feature {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .project--feature .project__content {
+    padding-right: clamp(26px, 3.6vw, 50px);
+  }
+  .project__visual-wrap {
+    padding: 0 14px 14px;
+  }
+  .project--feature .project-visual {
+    min-height: 430px;
+    height: 430px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .project-grid .project--compact:last-child {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+  .project-grid .project--compact:last-child .project__visual-wrap--compact {
+    padding: 10px 0 10px 10px;
+  }
+  .project-grid .project--compact:last-child .project-visual {
+    height: 100%;
+    min-height: 290px;
+  }
+  .project-grid .project--compact:last-child .project__content {
+    padding: 26px 28px;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .about__card {
+    position: static;
+  }
+  .profile-card {
+    min-height: auto;
+  }
+  .profile-card__code {
+    margin-top: 26px;
+  }
+  .profile-card__badge--two {
+    display: flex;
+  }
+  .about__principles {
+    max-width: 100%;
+  }
+
+  .experience__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .experience__head {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    column-gap: 28px;
+  }
+  .experience__head .label {
+    grid-column: 1 / -1;
+  }
+  .experience__head h2 {
+    margin-top: 18px;
+  }
+  .experience__head > p {
+    max-width: 340px;
+  }
+  .experience__head .text-link {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    align-self: end;
+    margin-bottom: 6px;
+  }
+
+  .stack-row {
+    grid-template-columns: 34px minmax(0, 1fr) 32px;
+    gap: 8px 16px;
+    padding-block: 22px;
+  }
+  .stack-row__num {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .stack-row h3 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .stack-row > p {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .stack-row__items {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 6px;
+  }
+  .stack-row__arrow {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .stack-row:hover {
+    padding-left: 10px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat:nth-child(2) {
+    border-right: 0;
+  }
+  .stat:nth-child(1),
+  .stat:nth-child(2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .contact__aside {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-left: 0;
+    padding-top: 26px;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 860px) {
+  .job {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-block: 30px;
+  }
+  .job::before {
+    display: none;
+  }
+  .job__meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+  .job__date {
+    font-size: 8px;
+  }
+  .job__place {
+    padding-left: 12px;
+    border-left: 1px solid var(--line);
+  }
+  .job__summary {
+    margin-top: 14px;
+  }
+  .education {
+    align-items: flex-start;
+  }
+  .awards {
+    grid-template-columns: 1fr;
+  }
+  .award {
+    min-height: 330px;
+  }
+  .contact__aside {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact__aside .contact__detail:last-child {
+    grid-column: 1 / -1;
+  }
+  .footer__meta {
+    gap: 14px;
+  }
+  .footer__meta span:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding-top: 108px;
+  }
+  .hero__meta {
+    font-size: 7.5px;
+    letter-spacing: 0.08em;
+  }
+  .hero__meta > span:nth-child(3) {
+    display: none;
+  }
+  .hero__pill {
+    padding: 6px 10px;
+  }
+  .hero__title {
+    font-size: clamp(2.4rem, 10.8vw, 8.4rem);
+  }
+  .hero__title .hero__line--outline::after {
+    width: 7px;
+    height: 7px;
+  }
+  .hero__role {
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-size: 8.5px;
+  }
+  .hero__role-sep {
+    display: none;
+  }
+  .hero__role-sub {
+    width: 100%;
+  }
+  .hero__bottom {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 32px;
+    padding-bottom: 26px;
+  }
+  .hero__lede {
+    font-size: 13.5px;
+    max-width: 100%;
+  }
+  .hero__actions {
+    width: 100%;
+  }
+  .hero__actions .btn {
+    flex: 1;
+    min-width: 210px;
+  }
+  .hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    padding-block: 8px;
+  }
+  .hero__stat {
+    padding: 10px 14px;
+  }
+  .hero__stat:nth-child(1),
+  .hero__stat:nth-child(2) {
+    border-bottom: 1px solid var(--line);
+  }
+  .hero__stat:nth-child(2) {
+    border-right: 0;
+  }
+  .hero__stat:first-child {
+    padding-left: 0;
+  }
+  .hero__stat-value {
+    font-size: 1.5rem;
+  }
+  .hero__stat-label {
+    font-size: 7px;
+  }
+
+  .marquee {
+    transform: rotate(-1.8deg) scale(1.04);
+    margin-top: 20px;
+  }
+  .marquee__group {
+    padding-block: 9px;
+  }
+  .marquee__group span {
+    font-size: 0.72rem;
+  }
+
+  .section {
+    padding-block: 82px;
+  }
+  .section-head {
+    margin-bottom: 40px;
+  }
+  .section-head h2 {
+    font-size: clamp(2.1rem, 8.6vw, 3.4rem);
+  }
+  .section-head__intro {
+    font-size: 12.5px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-grid .project--compact:last-child {
+    grid-column: auto;
+    display: flex;
+  }
+  .project-grid .project--compact:last-child .project__visual-wrap--compact {
+    padding: 10px 10px 0;
+  }
+  .project-grid .project--compact:last-child .project-visual {
+    height: 236px;
+    min-height: 236px;
+  }
+  .project-grid .project--compact:last-child .project__content {
+    padding: 22px 22px 24px;
+  }
+  .project--feature .project__content {
+    padding: 24px 22px;
+  }
+  .project__title {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+  }
+  .project__desc {
+    font-size: 12.5px;
+  }
+  .project__metrics {
+    gap: 24px;
+    padding-top: 24px;
+    flex-wrap: wrap;
+  }
+  .project--feature .project-visual {
+    height: 360px;
+    min-height: 360px;
+  }
+  .project__visual-wrap {
+    padding: 0 10px 10px;
+  }
+  .project__tags span {
+    font-size: 7px;
+    padding: 3px 7px;
+  }
+  .project__visual-wrap--compact .project-visual {
+    height: 220px;
+    min-height: 220px;
+  }
+  .project--compact .project__content {
+    padding: 20px 20px 22px;
+  }
+  .mesh__badge--one {
+    top: 18px;
+    right: 14px;
+    padding: 8px 10px;
+  }
+  .mesh__badge--one strong {
+    font-size: 17px;
+  }
+  .mesh__badge--two {
+    bottom: 15px;
+    left: 14px;
+  }
+  .mesh__label {
+    display: none;
+  }
+  .mesh__node--core {
+    width: 64px;
+    height: 64px;
+    font-size: 6.5px;
+  }
+  .mesh__node {
+    font-size: 6.5px;
+    padding: 4px 6px;
+  }
+
+  .profile-card {
+    padding: 22px;
+  }
+  .profile-card__monogram {
+    font-size: 6.8rem;
+  }
+  .profile-card__badge--one {
+    top: 70px;
+    right: 18px;
+  }
+  .profile-card__badge--two {
+    top: 124px;
+    right: 38px;
+  }
+  .profile-card__rows strong {
+    font-size: 10px;
+  }
+  .profile-card__code {
+    font-size: 7.5px;
+    padding: 13px;
+  }
+  .principle {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+  }
+  .principle h3 {
+    font-size: 1.25rem;
+  }
+
+  .experience__head {
+    display: block;
+  }
+  .experience__head h2 {
+    font-size: clamp(2.2rem, 8.4vw, 3.4rem);
+  }
+  .experience__head > p {
+    margin: 18px 0 18px;
+  }
+  .job__heading {
+    display: block;
+  }
+  .job__badge {
+    margin-top: 10px;
+  }
+  .education {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px;
+  }
+  .education__label {
+    writing-mode: horizontal-tb;
+    transform: none;
+    width: 100%;
+  }
+  .education__mark {
+    font-size: 18px;
+  }
+
+  .stack-row {
+    grid-template-columns: 26px minmax(0, 1fr) 32px;
+    padding-block: 20px;
+  }
+  .stack-row h3 {
+    font-size: 1.2rem;
+  }
+  .stack-row__items span {
+    font-size: 6.8px;
+    padding: 3px 6px;
+  }
+
+  .stats {
+    margin-bottom: 34px;
+  }
+  .stat {
+    padding: 22px 16px;
+  }
+  .stat strong {
+    font-size: clamp(2.4rem, 10vw, 3.2rem);
+  }
+  .stat > span {
+    font-size: 6.8px;
+  }
+  .award {
+    min-height: 310px;
+    padding: 24px 22px;
+  }
+  .award__rank {
+    margin-top: 26px;
+  }
+  .award__spark {
+    top: 20px;
+    right: 20px;
+    font-size: 26px;
+  }
+
+  .contact {
+    padding-bottom: 80px;
+  }
+  .contact__title {
+    font-size: clamp(2.55rem, 10vw, 4.2rem);
+  }
+  .contact__top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .contact__grid {
+    margin-top: 34px;
+    padding-top: 28px;
+  }
+  .contact__email-wrap {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact__email {
+    font-size: clamp(1.08rem, 5vw, 1.55rem);
+  }
+  .copy-btn {
+    margin-left: 0;
+  }
+  .contact__actions .btn {
+    flex: 1;
+    min-width: 205px;
+  }
+  .contact__aside {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .contact__aside .contact__detail:last-child {
+    grid-column: auto;
+  }
+
+  .footer__top {
+    gap: 16px;
+  }
+  .footer__meta {
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .footer__meta span:last-child {
+    display: inline;
+  }
+  .footer__wordmark {
+    font-size: 11vw;
+    margin-top: 34px;
+  }
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-bottom: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    padding-top: 96px;
+  }
+  .nav {
+    padding-block: 16px;
+  }
+  .nav.is-scrolled {
+    padding-block: 10px;
+  }
+  .brand__mark {
+    font-size: 22px;
+  }
+  .nav__meta {
+    gap: 0;
+  }
+  .hero__meta > span:nth-child(2) {
+    display: none;
+  }
+  .hero__meta {
+    justify-content: flex-start;
+  }
+  .hero__title {
+    font-size: clamp(2.4rem, 10.8vw, 4.4rem);
+    letter-spacing: -0.08em;
+  }
+  .hero__role {
+    margin-top: 16px;
+    font-size: 8px;
+  }
+  .hero__actions {
+    flex-direction: column;
+  }
+  .hero__actions .btn {
+    width: 100%;
+    flex: none;
+    min-width: 0;
+  }
+  .hero__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero__stat {
+    gap: 7px;
+    padding: 9px 10px;
+  }
+  .hero__stat-value {
+    font-size: 1.28rem;
+  }
+  .hero__stat-label {
+    font-size: 6.4px;
+    letter-spacing: 0.03em;
+  }
+  .hero__stat:nth-child(3) {
+    border-bottom: 0;
+  }
+
+  .section {
+    padding-block: 70px;
+  }
+  .section-head h2 {
+    font-size: clamp(1.95rem, 8.8vw, 2.9rem);
+  }
+  .label {
+    font-size: 8.5px;
+  }
+  .label::after {
+    width: 26px;
+  }
+  .project__topline {
+    gap: 10px;
+  }
+  .project__tags {
+    display: none;
+  }
+  .project--feature .project__tags {
+    display: flex;
+  }
+  .project--feature .project-visual {
+    height: 320px;
+    min-height: 320px;
+  }
+  .project__metrics strong {
+    font-size: 1.2rem;
+  }
+  .project__metrics span {
+    font-size: 6.5px;
+  }
+  .project__foot {
+    gap: 12px;
+  }
+  .project__note {
+    font-size: 6.6px;
+  }
+  .mesh__node--a { left: 18%; top: 20%; }
+  .mesh__node--c { left: 82%; top: 20%; }
+  .mesh__node--d { left: 19%; top: 78%; }
+  .mesh__node--f { left: 81%; top: 78%; }
+  .mesh__badge--two {
+    display: none;
+  }
+  .nutrition__gauge {
+    width: 132px;
+    height: 132px;
+  }
+  .nutrition__ring-inner strong {
+    font-size: 30px;
+  }
+  .farming__field {
+    bottom: 66px;
+  }
+
+  .profile-card__badge--two {
+    display: none;
+  }
+  .profile-card__rows > div {
+    gap: 10px;
+  }
+  .profile-card__rows span {
+    font-size: 6.8px;
+  }
+  .profile-card__rows strong {
+    font-size: 9.5px;
+  }
+  .profile-card__code {
+    font-size: 7px;
+  }
+  .about__chips span {
+    font-size: 6.8px;
+    padding: 4px 7px;
+  }
+
+  .experience__head h2 {
+    font-size: clamp(2rem, 8.6vw, 2.8rem);
+  }
+  .job__heading h3 {
+    font-size: 1.15rem;
+  }
+  .job__list li {
+    font-size: 10.8px;
+  }
+  .job__tags span {
+    font-size: 6.4px;
+  }
+
+  .stack-row h3 {
+    font-size: 1.1rem;
+  }
+  .stack-row > p {
+    font-size: 6.6px;
+  }
+  .stack-row__num {
+    font-size: 7px;
+  }
+
+  .stat strong {
+    font-size: clamp(2.1rem, 9vw, 2.8rem);
+  }
+  .stat > span {
+    font-size: 6.2px;
+  }
+  .stat {
+    padding: 18px 12px;
+  }
+  .award__rank span {
+    font-size: 3.1rem;
+  }
+  .award > p {
+    font-size: 11.5px;
+  }
+  .award__foot span {
+    font-size: 6.4px;
+  }
+
+  .contact__title {
+    font-size: clamp(2.25rem, 10.4vw, 3.2rem);
+  }
+  .contact__title-serif {
+    letter-spacing: -0.035em;
+  }
+  .contact__actions {
+    flex-direction: column;
+  }
+  .contact__actions .btn {
+    width: 100%;
+    flex: none;
+    min-width: 0;
+  }
+
+  .footer__meta {
+    font-size: 6.6px;
+  }
+  .footer__wordmark {
+    font-size: 11vw;
+  }
+  .footer__bottom {
+    font-size: 6.2px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero__lede {
+    font-size: 12.5px;
+  }
+  .profile-card__badge--one {
+    display: none;
+  }
+  .profile-card__monogram {
+    font-size: 5.8rem;
+  }
+  .section-head h2 {
+    font-size: 1.9rem;
+  }
+  .stack-row__items span:nth-child(n + 5) {
+    display: none;
+  }
+  .stat > span br {
+    display: none;
+  }
+}
