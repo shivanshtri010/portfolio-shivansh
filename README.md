@@ -20,6 +20,7 @@ Then open <http://127.0.0.1:4173>. A local server is required for the self-hoste
 ```
 index.html                    All page content, case studies, structured data, social metadata
 privacy.html                  Privacy and analytics notice with a reset control
+404.html                      Branded not-found page (uses a base href for asset paths)
 favicon.svg                   Monogram icon
 apple-touch-icon.png          Home-screen icon
 robots.txt / sitemap.xml      Crawler hints and the URL set

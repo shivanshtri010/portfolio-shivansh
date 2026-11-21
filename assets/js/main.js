@@ -105,23 +105,33 @@
     return document.querySelector(link.getAttribute("href"));
   }).filter(Boolean);
   var ticking = false;
+  var scrollSpan = 0;
+  var sectionTops = [];
+
+  /* Cache geometry so scroll frames read and write without interleaving
+     layout queries and style updates (which forces a reflow). */
+  function measureScroll() {
+    scrollSpan = Math.max(doc.scrollHeight - window.innerHeight, 0);
+    sectionTops = navSections.map(function (section) {
+      return { id: section.id, top: section.offsetTop };
+    });
+  }
 
   function updateScrollUI() {
     var y = window.scrollY || window.pageYOffset;
-    var max = doc.scrollHeight - window.innerHeight;
 
     if (nav) nav.classList.toggle("is-scrolled", y > 24);
 
     if (progressBar) {
-      var ratio = max > 0 ? Math.min(Math.max(y / max, 0), 1) : 0;
+      var ratio = scrollSpan > 0 ? Math.min(Math.max(y / scrollSpan, 0), 1) : 0;
       progressBar.style.transform = "scaleX(" + ratio + ")";
     }
 
     var activeId = "";
     var marker = y + window.innerHeight * 0.34;
 
-    navSections.forEach(function (section) {
-      if (section.offsetTop <= marker) activeId = section.id;
+    sectionTops.forEach(function (section) {
+      if (section.top <= marker) activeId = section.id;
     });
 
     navLinks.forEach(function (link) {
@@ -141,7 +151,12 @@
   }
 
   window.addEventListener("scroll", requestScrollUI, { passive: true });
-  window.addEventListener("resize", requestScrollUI);
+  window.addEventListener("resize", function () {
+    measureScroll();
+    requestScrollUI();
+  });
+  window.addEventListener("load", measureScroll);
+  measureScroll();
   updateScrollUI();
 
   /* ---------- 04 · Clocks and year ---------- */
@@ -281,6 +296,7 @@
       panel.inert = !open;
       panel.setAttribute("aria-hidden", open ? "false" : "true");
       if (label) label.textContent = open ? "Close case study" : "Read case study";
+      window.setTimeout(measureScroll, 650);
     }
 
     setOpen(false);

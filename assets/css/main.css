@@ -846,6 +846,35 @@ body.menu-open {
   filter: none;
 }
 
+/* Hero enters immediately from CSS so the largest text paints without
+   waiting for deferred JavaScript. */
+
+.hero [data-hero] {
+  animation: hero-enter 0.95s var(--ease) both;
+  animation-delay: var(--hero-delay, 0s);
+}
+
+.hero__eyebrow { --hero-delay: 0.04s; }
+.hero__line:first-of-type { --hero-delay: 0.1s; }
+.hero__line--outline { --hero-delay: 0.18s; }
+.hero__role { --hero-delay: 0.26s; }
+.hero__lede { --hero-delay: 0.32s; }
+.hero__actions { --hero-delay: 0.38s; }
+.hero__specs { --hero-delay: 0.44s; }
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -1408,5 +1437,12 @@ body.menu-open {
 
   .hero__lens {
     transform: none !important;
+  }
+
+  .hero [data-hero] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }

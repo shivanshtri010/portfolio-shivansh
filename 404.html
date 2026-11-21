@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found — Shivansh Tripathi</title>
+  <meta name="description" content="That page does not exist. Return to Shivansh Tripathi's portfolio to explore selected work, experience and contact details." />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex, follow" />
+  <base href="/portfolio-shivansh/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preload" href="assets/fonts/geist-normal-100-900.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+      overflow: hidden;
+    }
+
+    .error-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .error-main {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+      align-items: center;
+      gap: clamp(32px, 6vw, 88px);
+      flex: 1;
+      width: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+      padding-block: clamp(56px, 9vw, 120px);
+      isolation: isolate;
+    }
+
+    .error__copy {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+    }
+
+    .error__copy h1 {
+      margin-top: 16px;
+      font-size: clamp(2.9rem, 6.4vw, 5.4rem);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      line-height: 0.96;
+      text-wrap: balance;
+    }
+
+    .error__copy h1 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+    }
+
+    .error__lede {
+      max-width: 48ch;
+      margin-top: 22px;
+      color: var(--text-2);
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    .error__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .error__hint {
+      margin-top: 28px;
+      color: var(--text-3);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.09em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .error__hint a {
+      color: var(--text-2);
+      text-decoration: underline;
+      text-decoration-color: var(--line-strong);
+      text-underline-offset: 3px;
+    }
+
+    .error__hint a:hover {
+      color: var(--text);
+      text-decoration-color: var(--accent);
+    }
+
+    .error__figure {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 340px;
+    }
+
+    .error__figure::before {
+      content: "";
+      position: absolute;
+      width: min(520px, 42vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.07), transparent 62%);
+    }
+
+    .error__figure span {
+      position: relative;
+      color: #0b0d13;
+      font-size: clamp(8rem, 17vw, 15rem);
+      font-weight: 560;
+      letter-spacing: -0.08em;
+      line-height: 0.8;
+      text-shadow:
+        -1.5px -1.5px 0 rgba(245, 245, 242, 0.34),
+        0 -1.5px 0 rgba(245, 245, 242, 0.34),
+        1.5px -1.5px 0 rgba(245, 245, 242, 0.34),
+        -1.5px 0 0 rgba(245, 245, 242, 0.34),
+        1.5px 0 0 rgba(245, 245, 242, 0.34),
+        -1.5px 1.5px 0 rgba(245, 245, 242, 0.34),
+        0 1.5px 0 rgba(245, 245, 242, 0.34),
+        1.5px 1.5px 0 rgba(245, 245, 242, 0.34),
+        0 0 90px rgba(255, 255, 255, 0.05);
+    }
+
+    .error-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding: 24px var(--pad);
+      border-top: 1px solid var(--line);
+      color: var(--text-3);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .error-foot a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 860px) {
+      .error-main {
+        grid-template-columns: 1fr;
+        align-content: center;
+      }
+
+      .error__figure {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .error-top {
+        padding-block: 18px;
+      }
+
+      .error-top .brand__name {
+        display: none;
+      }
+
+      .error__actions .btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .error-page * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="error-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="error-top container">
+    <a class="brand" href="index.html" aria-label="ST Shivansh Tripathi — home">
+      <span class="brand__mark" aria-hidden="true">ST</span>
+      <span class="brand__name">Shivansh Tripathi</span>
+    </a>
+    <a class="footer__top-link" href="index.html">Back to portfolio <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="error-main" id="main">
+    <div class="error__copy">
+      <span class="label"><span class="label__dot" aria-hidden="true"></span>Error 404 / Page not found</span>
+      <h1>This page drifted <em>out of scope.</em></h1>
+      <p class="error__lede">The URL does not point to anything here. It may have moved, or the link that brought you here may be out of date. The work, experience and contact details are all still on the main page.</p>
+      <div class="error__actions">
+        <a class="btn btn--primary" href="index.html">Back to portfolio <span aria-hidden="true">↗</span></a>
+        <a class="btn btn--glass" href="index.html#work">View selected work</a>
+      </div>
+      <p class="error__hint">Need a direct answer? <a href="mailto:shivanshtri010@gmail.com">shivanshtri010@gmail.com</a></p>
+    </div>
+
+    <div class="error__figure" aria-hidden="true"><span>404</span></div>
+  </main>
+
+  <footer class="error-foot">
+    <span>© <span id="year">2026</span> Shivansh Tripathi</span>
+    <span>Noida, India</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>

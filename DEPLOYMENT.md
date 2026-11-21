@@ -10,6 +10,7 @@ Everything below can run on free tiers. The only possible recurring cost is the 
 - The site deploys to the default project URL, **`https://shivanshtri010.github.io/portfolio-shivansh/`**.
 - `assets/js/config.js` ships with **empty** `posthogKey` and `cloudflareToken` values. That is intentional. With both empty, no analytics script loads, no consent banner appears, no network requests leave the page, and every other feature works normally.
 - There is **no `CNAME` file** and **no custom domain** configured yet. Do not create one until the domain is registered and ready; the deployment workflow only copies a `CNAME` file if one exists.
+- `404.html` uses `<base href="/portfolio-shivansh/">` so its fonts, styles and links resolve from any missing sub-path. Change this to `/` when the custom domain goes live, or the 404 page will look for assets under the old project path.
 - The absolute URLs in `index.html`, `privacy.html`, `sitemap.xml`, `robots.txt` and `config.js` point at the GitHub Pages URL above. They must all change together when the domain goes live (section 4.3).
 
 ---
@@ -56,7 +57,7 @@ The commit history is already local; there is nothing to initialise. Verify with
 3. Push to `main`, or run **Actions → Deploy portfolio to GitHub Pages → Run workflow**.
 4. The workflow in `.github/workflows/deploy.yml` publishes the site and prints the URL in the `github-pages` environment.
 
-The workflow uploads only the site files (`index.html`, `privacy.html`, `assets`, `favicon.svg`, `apple-touch-icon.png`, `robots.txt`, `sitemap.xml`, and `CNAME` if present). README, deployment docs and the workflow itself are not published.
+The workflow uploads only the site files (`index.html`, `privacy.html`, `404.html`, `assets`, `favicon.svg`, `apple-touch-icon.png`, `robots.txt`, `sitemap.xml`, and `CNAME` if present). README, deployment docs and the workflow itself are not published.
 
 The first deploy should be available at:
 
@@ -139,6 +140,7 @@ The site currently uses the GitHub Pages URL as a safe placeholder. When the dom
 | --- | --- |
 | `index.html` | `link rel="canonical"`, `og:url`, `og:image`, `twitter:image` |
 | `privacy.html` | `link rel="canonical"`, `og:url` |
+| `404.html` | `<base href="/">` |
 | `sitemap.xml` | both `<loc>` values |
 | `robots.txt` | the `Sitemap:` line |
 | `assets/js/config.js` | `siteUrl` |
@@ -301,6 +303,8 @@ If your legal context requires a different consent model, edit `assets/js/analyt
 - [ ] Resume downloads from hero, experience and contact.
 - [ ] Email copy shows the toast and updates the button label.
 - [ ] All external links use `rel="noopener"`.
+- [ ] A missing URL returns `404.html` with working styles, fonts and links.
+- [ ] Social preview shows the correct title, description and 1200×630 image.
 - [ ] No horizontal overflow at 1920, 1440, 1024, 768, 390 and 360 px.
 - [ ] Reduced-motion preference removes animation without hiding content.
 - [ ] Lighthouse: performance, accessibility, best practices and SEO.
