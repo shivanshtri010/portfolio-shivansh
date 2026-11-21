@@ -866,12 +866,10 @@ body.menu-open {
   from {
     opacity: 0;
     transform: translateY(18px);
-    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 }
 
