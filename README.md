@@ -2,6 +2,9 @@
 
 A dark, quiet portfolio for a software engineer working on distributed systems, event-driven backends and applied AI. Hand-written HTML, CSS and vanilla JavaScript — no build step, no framework, no runtime dependencies.
 
+**Live:** <https://shivanshtri010.github.io/portfolio-shivansh/>
+
+
 The design borrows Apple's product-page discipline (generous space, one idea per screen, motion that explains rather than decorates) and applies it to an editorial layout: oversized Geist display type, JetBrains Mono metadata, a single italic serif accent, titanium silver as the only "colour", and one small lime status dot.
 
 ## Preview locally

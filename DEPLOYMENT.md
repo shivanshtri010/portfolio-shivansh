@@ -6,6 +6,7 @@ Everything below can run on free tiers. The only possible recurring cost is the 
 
 ## Current state
 
+- **Deployed:** <https://shivanshtri010.github.io/portfolio-shivansh/> — GitHub Pages, Actions source, HTTPS enforced. The repository is public and its homepage points at this URL.
 - The site deploys to the default project URL, **`https://shivanshtri010.github.io/portfolio-shivansh/`**.
 - `assets/js/config.js` ships with **empty** `posthogKey` and `cloudflareToken` values. That is intentional. With both empty, no analytics script loads, no consent banner appears, no network requests leave the page, and every other feature works normally.
 - There is **no `CNAME` file** and **no custom domain** configured yet. Do not create one until the domain is registered and ready; the deployment workflow only copies a `CNAME` file if one exists.
