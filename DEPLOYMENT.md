@@ -4,24 +4,47 @@ This portfolio is a static site: hand-written HTML, CSS and vanilla JavaScript w
 
 Everything below can run on free tiers. The only possible recurring cost is the custom domain after the GitHub Student Developer Pack offer ends — check the renewal price at Name.com before committing.
 
+## Current state
+
+- The site deploys to the default project URL, **`https://shivanshtri010.github.io/portfolio-shivansh/`**.
+- `assets/js/config.js` ships with **empty** `posthogKey` and `cloudflareToken` values. That is intentional. With both empty, no analytics script loads, no consent banner appears, no network requests leave the page, and every other feature works normally.
+- There is **no `CNAME` file** and **no custom domain** configured yet. Do not create one until the domain is registered and ready; the deployment workflow only copies a `CNAME` file if one exists.
+- The absolute URLs in `index.html`, `privacy.html`, `sitemap.xml`, `robots.txt` and `config.js` point at the GitHub Pages URL above. They must all change together when the domain goes live (section 4.3).
+
 ---
 
 ## 1. Put the site on GitHub
 
-From this folder:
+The repository must exist before the first push. Choose one route.
+
+### Route A — GitHub CLI (recommended)
 
 ```powershell
-git init
-git add .
-git commit -m "feat: rebuild portfolio with analytics and deployment"
-git branch -M main
+winget install --id GitHub.cli
+gh auth login          # GitHub.com → HTTPS → login with a browser
+gh repo create portfolio-shivansh --public --source . --remote origin --push
+```
+
+### Route B — create it in the browser
+
+1. Open <https://github.com/new>.
+2. Name it **`portfolio-shivansh`**, set visibility to **Public**, and do **not** add a README, `.gitignore` or licence (the local repo already has content).
+3. Create the repository, then from this folder:
+
+```powershell
 git remote add origin https://github.com/shivanshtri010/portfolio-shivansh.git
+git branch -M main
 git push -u origin main
 ```
 
-Create the repository on GitHub first, keep it **public**, and make sure the default branch is `main`.
+If a `origin` remote already exists, use `git remote set-url origin <url>` instead of `git remote add`.
+
+The commit history is already local; there is nothing to initialise. Verify with `git log --oneline` and `git remote -v`.
 
 > If the repository has a different name, update the canonical, Open Graph and sitemap URLs described in section 4.
+
+> **Credentials:** do not paste a personal access token into the repository. Signing in through `gh auth login` or Git Credential Manager keeps the token in the OS credential store.
+
 
 ---
 
@@ -43,6 +66,19 @@ https://shivanshtri010.github.io/portfolio-shivansh/
 Every path in the site is relative, so it works both at that subpath and at a custom apex domain.
 
 **If the branch is not `main`**, change `branches: [main]` in `.github/workflows/deploy.yml`.
+
+### 2.1 Verify the live site
+
+Once the workflow is green:
+
+1. Open `https://shivanshtri010.github.io/portfolio-shivansh/`.
+2. Confirm the page loads over HTTPS with no console errors.
+3. Check `https://shivanshtri010.github.io/portfolio-shivansh/robots.txt` and `/sitemap.xml`.
+4. Open the deployed URL in a private window. With the analytics keys empty, **no consent banner should appear** and the DevTools Network tab should show no requests to `posthog.com` or `cloudflareinsights.com`.
+5. Test the mobile menu, a case study toggle, the résumé download, the email copy button and the privacy link.
+6. Run Lighthouse on the live URL and record the four scores.
+7. If the deploy shows a 404, re-check **Settings → Pages → Source = GitHub Actions** and that the workflow ran on `main`.
+
 
 ---
 
@@ -150,17 +186,29 @@ The site ships with a consent-gated integration. No PostHog request is made unti
 
 ### 5.1 Create the project
 
+### 5.1 Create the project and add the key
+
 1. Create a free account at <https://posthog.com>.
 2. Create a project, choosing the US or EU cloud region.
 3. Open **Project settings → Project API key** and copy the public key beginning with `phc_`.
-4. Open `assets/js/config.js` and set:
+4. Open `assets/js/config.js` and replace the empty placeholder:
 
 ```js
-posthogKey: "phc_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+posthogKey: "phc_REPLACE_WITH_YOUR_PROJECT_KEY",
 posthogHost: "https://us.i.posthog.com" // or https://eu.i.posthog.com
 ```
 
 5. Commit and deploy. Never put a personal API key here; only the project key is browser-safe.
+6. Load the live site in a private window and confirm the consent banner appears after about a second.
+
+**With the key left empty** (the current state), `analytics.js` exits before creating a banner, loading a script or sending a request. The site is fully functional and silently skips analytics. Cloudflare and PostHog are independent: setting only one key enables only that tool.
+
+Cloudflare's token goes in the same file:
+
+```js
+cloudflareToken: "REPLACE_WITH_YOUR_BEACON_TOKEN"
+```
+
 
 ### 5.2 Project settings to enable
 
