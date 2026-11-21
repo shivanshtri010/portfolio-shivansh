@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy &amp; Analytics — Shivansh Tripathi</title>
+  <meta name="description" content="How this portfolio handles analytics and privacy. Analytics is optional, consent-gated and does not build personal profiles." />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Privacy &amp; Analytics — Shivansh Tripathi" />
+  <meta property="og:description" content="Analytics on this portfolio is optional, consent-gated and privacy-first." />
+  <meta property="og:url" content="https://shivanshtri010.github.io/portfolio-shivansh/privacy.html" />
+  <link rel="canonical" href="https://shivanshtri010.github.io/portfolio-shivansh/privacy.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preload" href="assets/fonts/geist-normal-100-900.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .legal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .legal {
+      max-width: 780px;
+      padding-block: clamp(56px, 8vw, 104px) clamp(72px, 9vw, 120px);
+    }
+
+    .legal h1 {
+      max-width: 16ch;
+      margin-top: 14px;
+      font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .legal h1 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .legal__lede {
+      max-width: 60ch;
+      margin-top: 22px;
+      color: var(--text-2);
+      font-size: clamp(1rem, 1.2vw, 1.12rem);
+      line-height: 1.72;
+      text-wrap: pretty;
+    }
+
+    .legal h2 {
+      margin-top: 42px;
+      color: var(--text);
+      font-size: 1.12rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+    }
+
+    .legal p,
+    .legal li {
+      max-width: 68ch;
+      margin-top: 10px;
+      color: var(--text-2);
+      font-size: 14px;
+      line-height: 1.75;
+      text-wrap: pretty;
+    }
+
+    .legal ul {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 10px;
+      padding-left: 18px;
+      list-style: disc;
+    }
+
+    .legal li::marker {
+      color: var(--text-3);
+    }
+
+    .legal a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--line-strong);
+      text-underline-offset: 3px;
+    }
+
+    .legal a:hover {
+      text-decoration-color: var(--accent);
+    }
+
+    .legal__reset {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .legal__reset p {
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--text-3);
+    }
+
+    .legal__foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-block: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--text-3);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .legal__foot a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 560px) {
+      .legal-top {
+        padding-block: 18px;
+      }
+
+      .legal-top .brand__name {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#legal-main">Skip to content</a>
+
+  <header class="legal-top container">
+    <a class="brand" href="index.html" aria-label="Shivansh Tripathi — home">
+      <span class="brand__mark" aria-hidden="true">ST</span>
+      <span class="brand__name">Shivansh Tripathi</span>
+    </a>
+    <a class="footer__top-link" href="index.html">Back to portfolio <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="legal container" id="legal-main">
+    <span class="label"><span class="label__dot" aria-hidden="true"></span>Privacy / Analytics</span>
+    <h1>Privacy, without the <em>fine print.</em></h1>
+    <p class="legal__lede">This portfolio is a static site. It has no accounts, forms or checkout. Analytics is optional, loads only after you allow it, and is used to understand which sections and projects are useful.</p>
+
+    <h2>What is measured</h2>
+    <p>When analytics is allowed, the following may be recorded:</p>
+    <ul>
+      <li>Page views, referral source, approximate country, device type, browser and operating system.</li>
+      <li>Which sections were viewed, which case studies were opened, and which outbound links were used.</li>
+      <li>Resume downloads and contact-link interactions.</li>
+      <li>A masked session replay of interaction patterns, with input values and marked contact details hidden.</li>
+    </ul>
+    <p>PostHog is the primary tool. Cloudflare Web Analytics may be used for an additional, cookieless traffic summary. Both are configured to avoid advertising profiles and cross-site tracking.</p>
+
+    <h2>What is not collected</h2>
+    <ul>
+      <li>No passwords, payment information or account credentials.</li>
+      <li>No advertising identifiers or cross-site behavioural profiles.</li>
+      <li>No attempt to identify an individual visitor. Anonymous visitors are not turned into identifiable person profiles.</li>
+      <li>No raw visitor IP logs are accessed by this site. GitHub Pages, as the host, may keep infrastructure logs under its own policies.</li>
+    </ul>
+
+    <h2>Your choice</h2>
+    <p>Analytics stays off until you choose “Allow analytics”. Declining is remembered in local storage on this device. Do Not Track and Global Privacy Control are honoured automatically. You can change your choice at any time using the button below; the page will reload with analytics disabled until you opt in again.</p>
+
+    <h2>Providers</h2>
+    <p>Read the provider policies for details on processing and retention: <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog privacy policy</a> and <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare privacy policy</a>. The portfolio remains fully usable if either service is blocked.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this notice can go to <a href="mailto:shivanshtri010@gmail.com">shivanshtri010@gmail.com</a>.</p>
+
+    <div class="legal__reset">
+      <button class="btn btn--glass" id="reset-analytics" type="button">Reset analytics choice</button>
+      <p>Last updated 21 November 2026.</p>
+    </div>
+  </main>
+
+  <footer class="legal__foot container">
+    <span>© <span id="year">2026</span> Shivansh Tripathi</span>
+    <a href="index.html">Portfolio</a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    document.getElementById("reset-analytics").addEventListener("click", function () {
+      try {
+        window.localStorage.removeItem("st-analytics-consent");
+      } catch (error) {
+        /* Nothing else to clear. */
+      }
+
+      document.cookie.split(";").forEach(function (cookie) {
+        var name = cookie.split("=")[0].trim();
+        if (name.indexOf("ph_") === 0) {
+          document.cookie = name + "=; Max-Age=0; path=/";
+        }
+      });
+
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>

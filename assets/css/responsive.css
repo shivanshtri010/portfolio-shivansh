@@ -1,800 +1,640 @@
 /* ============================================================
-   SHIVANSH TRIPATHI — PORTFOLIO
-   Responsive
+   Responsive adjustments
    ============================================================ */
 
-@media (max-width: 1240px) {
-  .nav__time {
+@media (min-width: 981px) {
+  .mobile-menu {
     display: none;
-  }
-  .hero__rail {
-    display: none;
-  }
-  .hero__bottom {
-    grid-template-columns: minmax(0, 1.2fr) auto;
-  }
-  .hero__scroll {
-    display: none;
-  }
-  .stack-row {
-    grid-template-columns: 36px minmax(120px, 0.95fr) minmax(140px, 0.8fr) minmax(0, 2fr) 32px;
-    gap: 16px;
   }
 }
 
-@media (max-width: 1080px) {
-  .brand__status {
+@media (max-width: 1160px) {
+  .nav__status {
     display: none;
   }
-  .about__grid {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 40px;
+
+  .nav__shell {
+    gap: 16px;
   }
-  .profile-card__badge--two {
-    display: none;
-  }
-  .experience__grid {
-    gap: 44px;
-  }
-  .project--feature {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+
+  .nav__link {
+    padding-inline: 11px;
   }
 }
 
 @media (max-width: 980px) {
-  .nav__links {
+  .nav {
+    top: 10px;
+  }
+
+  .nojs-nav {
+    position: fixed;
+    top: 76px;
+    right: 0;
+    left: 0;
+    z-index: 880;
+    display: block;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: rgba(8, 9, 13, 0.94);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+  }
+
+  .nojs-nav__inner {
+    display: flex;
+    gap: 20px;
+    padding: 10px var(--pad);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nojs-nav__inner::-webkit-scrollbar {
     display: none;
   }
-  .menu-toggle {
-    display: block;
+
+  .nojs-nav a {
+    color: var(--text-2);
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
-  .nav__meta {
-    gap: 12px;
+
+  .no-js .nav__toggle {
+    display: none;
   }
+
+  .no-js .hero {
+    padding-top: 148px;
+  }
+
+  .nav__shell {
+    grid-template-columns: 1fr auto;
+    height: 58px;
+    padding: 0 9px 0 10px;
+    border-radius: 18px;
+  }
+
+  .nav__links,
+  .nav__status,
   .nav__cta {
     display: none;
   }
 
+  .nav__toggle {
+    display: block;
+  }
+
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 24px;
+  }
+
+  .hero__inner {
+    min-height: calc(100svh - 144px);
+  }
+
+  .hero__title {
+    font-size: clamp(3rem, 16.8vw, 11rem);
+  }
+
+  .highlights__head,
   .section-head {
     grid-template-columns: 1fr;
-    gap: 28px;
-    align-items: start;
+    gap: 18px;
   }
-  .section-head__intro {
+
+  .highlights__head p,
+  .section-head > p {
     justify-self: start;
-    max-width: 540px;
-    padding-top: 18px;
+    max-width: 56ch;
   }
 
-  .project--feature {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .project--feature .project__content {
-    padding-right: clamp(26px, 3.6vw, 50px);
-  }
-  .project__visual-wrap {
-    padding: 0 14px 14px;
-  }
-  .project--feature .project-visual {
-    min-height: 430px;
-    height: 430px;
-  }
-
-  .project-grid {
+  .stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .project-grid .project--compact:last-child {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+
+  .stat {
+    padding: 24px 20px 4px 0;
   }
-  .project-grid .project--compact:last-child .project__visual-wrap--compact {
-    padding: 10px 0 10px 10px;
+
+  .stat:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
   }
-  .project-grid .project--compact:last-child .project-visual {
-    height: 100%;
-    min-height: 290px;
+
+  .stat:nth-child(4) {
+    border-top: 1px solid var(--line);
   }
-  .project-grid .project--compact:last-child .project__content {
-    padding: 26px 28px;
+
+  .project__main,
+  .project--reverse .project__main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .project--reverse .project__content,
+  .project--reverse .project__visual {
+    order: 0;
+  }
+
+  .project__title {
+    max-width: 18ch;
   }
 
   .about__grid {
     grid-template-columns: 1fr;
-    gap: 38px;
+    gap: 36px;
   }
-  .about__card {
-    position: static;
+
+  .profile {
+    position: relative;
+    top: 0;
   }
-  .profile-card {
-    min-height: auto;
+
+  .profile__mark {
+    height: 150px;
   }
-  .profile-card__code {
-    margin-top: 26px;
-  }
-  .profile-card__badge--two {
-    display: flex;
-  }
-  .about__principles {
-    max-width: 100%;
+
+  .about__body {
+    max-width: 760px;
   }
 
   .experience__grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
   }
+
   .experience__head {
-    position: static;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    column-gap: 28px;
-  }
-  .experience__head .label {
-    grid-column: 1 / -1;
-  }
-  .experience__head h2 {
-    margin-top: 18px;
-  }
-  .experience__head > p {
-    max-width: 340px;
-  }
-  .experience__head .text-link {
-    grid-column: 2;
-    grid-row: 2 / span 2;
-    align-self: end;
-    margin-bottom: 6px;
+    position: relative;
+    top: 0;
   }
 
-  .stack-row {
-    grid-template-columns: 34px minmax(0, 1fr) 32px;
-    gap: 8px 16px;
-    padding-block: 22px;
-  }
-  .stack-row__num {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .stack-row h3 {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .stack-row > p {
-    grid-column: 2;
-    grid-row: 2;
-  }
-  .stack-row__items {
-    grid-column: 1 / -1;
-    grid-row: 3;
-    margin-top: 6px;
-  }
-  .stack-row__arrow {
-    grid-column: 3;
-    grid-row: 1;
-  }
-  .stack-row:hover {
-    padding-left: 10px;
-  }
-
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .stat:nth-child(2) {
-    border-right: 0;
-  }
-  .stat:nth-child(1),
-  .stat:nth-child(2) {
-    border-bottom: 1px solid var(--line);
+  .experience__head p {
+    max-width: 52ch;
   }
 
   .contact__grid {
     grid-template-columns: 1fr;
-    gap: 34px;
   }
+
   .contact__aside {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    padding-left: 0;
-    padding-top: 26px;
-    border-left: 0;
-    border-top: 1px solid var(--line);
+    max-width: 640px;
   }
 }
 
 @media (max-width: 860px) {
-  .job {
+  .hero__body {
     grid-template-columns: 1fr;
-    gap: 12px;
-    padding-block: 30px;
+    align-items: start;
+    gap: 20px;
   }
-  .job::before {
+
+  .hero__actions {
+    justify-content: flex-start;
+  }
+
+  .hero__specs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 24px;
+  }
+
+  .scroll-cue,
+  .hero__location {
     display: none;
   }
-  .job__meta {
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
+
+  .hero__title {
+    font-size: clamp(2.9rem, 17.4vw, 9rem);
   }
-  .job__date {
-    font-size: 8px;
+
+  .about__quote {
+    max-width: 28ch;
   }
-  .job__place {
-    padding-left: 12px;
-    border-left: 1px solid var(--line);
-  }
-  .job__summary {
-    margin-top: 14px;
-  }
-  .education {
-    align-items: flex-start;
-  }
-  .awards {
-    grid-template-columns: 1fr;
-  }
-  .award {
-    min-height: 330px;
-  }
-  .contact__aside {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .contact__aside .contact__detail:last-child {
-    grid-column: 1 / -1;
-  }
-  .footer__meta {
-    gap: 14px;
-  }
-  .footer__meta span:last-child {
-    display: none;
+
+  .contact__title {
+    max-width: 14ch;
   }
 }
 
 @media (max-width: 760px) {
-  .hero {
-    padding-top: 108px;
-  }
-  .hero__meta {
-    font-size: 7.5px;
-    letter-spacing: 0.08em;
-  }
-  .hero__meta > span:nth-child(3) {
-    display: none;
-  }
-  .hero__pill {
-    padding: 6px 10px;
-  }
-  .hero__title {
-    font-size: clamp(2.4rem, 10.8vw, 8.4rem);
-  }
-  .hero__title .hero__line--outline::after {
-    width: 7px;
-    height: 7px;
-  }
-  .hero__role {
-    flex-wrap: wrap;
-    gap: 8px 14px;
-    font-size: 8.5px;
-  }
-  .hero__role-sep {
-    display: none;
-  }
-  .hero__role-sub {
-    width: 100%;
-  }
-  .hero__bottom {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin-top: 32px;
-    padding-bottom: 26px;
-  }
-  .hero__lede {
-    font-size: 13.5px;
-    max-width: 100%;
-  }
-  .hero__actions {
-    width: 100%;
-  }
-  .hero__actions .btn {
-    flex: 1;
-    min-width: 210px;
-  }
-  .hero__stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    padding-block: 8px;
-  }
-  .hero__stat {
-    padding: 10px 14px;
-  }
-  .hero__stat:nth-child(1),
-  .hero__stat:nth-child(2) {
-    border-bottom: 1px solid var(--line);
-  }
-  .hero__stat:nth-child(2) {
-    border-right: 0;
-  }
-  .hero__stat:first-child {
-    padding-left: 0;
-  }
-  .hero__stat-value {
-    font-size: 1.5rem;
-  }
-  .hero__stat-label {
-    font-size: 7px;
-  }
-
-  .marquee {
-    transform: rotate(-1.8deg) scale(1.04);
-    margin-top: 20px;
-  }
-  .marquee__group {
-    padding-block: 9px;
-  }
-  .marquee__group span {
-    font-size: 0.72rem;
+  :root {
+    --pad: clamp(18px, 4.6vw, 32px);
   }
 
   .section {
-    padding-block: 82px;
+    padding-block: 72px;
   }
-  .section-head {
-    margin-bottom: 40px;
+
+  .hero {
+    padding-top: 106px;
+    padding-bottom: 22px;
   }
+
+  .hero__inner {
+    min-height: calc(100svh - 128px);
+  }
+
+  .hero__eyebrow .mono-label {
+    font-size: 9.5px;
+  }
+
+  .hero__availability {
+    height: 28px;
+    font-size: 9px;
+  }
+
+  .hero__title {
+    font-size: 17.6vw;
+  }
+
+  .hero__line--outline {
+    -webkit-text-stroke-width: 0.8px;
+  }
+
+  .hero__role {
+    gap: 9px;
+    font-size: 9.5px;
+  }
+
+  .hero__sep {
+    width: 16px;
+  }
+
+  .hero__lede {
+    font-size: 0.98rem;
+  }
+
+  .btn {
+    height: 44px;
+    padding: 0 16px;
+    font-size: 12.5px;
+  }
+
+  .hero__specs {
+    padding-top: 16px;
+  }
+
+  .spec strong {
+    overflow: visible;
+    font-size: 11.5px;
+    white-space: normal;
+    text-overflow: clip;
+  }
+
+  .spec > span:last-child {
+    font-size: 10.5px;
+  }
+
+  .mobile-menu__links a {
+    font-size: clamp(1.9rem, 9vw, 3rem);
+  }
+
+  .highlights__head h2,
   .section-head h2 {
-    font-size: clamp(2.1rem, 8.6vw, 3.4rem);
-  }
-  .section-head__intro {
-    font-size: 12.5px;
+    font-size: clamp(2.1rem, 8vw, 3rem);
   }
 
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-  .project-grid .project--compact:last-child {
-    grid-column: auto;
-    display: flex;
-  }
-  .project-grid .project--compact:last-child .project__visual-wrap--compact {
-    padding: 10px 10px 0;
-  }
-  .project-grid .project--compact:last-child .project-visual {
-    height: 236px;
-    min-height: 236px;
-  }
-  .project-grid .project--compact:last-child .project__content {
-    padding: 22px 22px 24px;
-  }
-  .project--feature .project__content {
-    padding: 24px 22px;
-  }
-  .project__title {
-    font-size: clamp(1.9rem, 8vw, 2.6rem);
-  }
-  .project__desc {
-    font-size: 12.5px;
-  }
-  .project__metrics {
-    gap: 24px;
-    padding-top: 24px;
-    flex-wrap: wrap;
-  }
-  .project--feature .project-visual {
-    height: 360px;
-    min-height: 360px;
-  }
-  .project__visual-wrap {
-    padding: 0 10px 10px;
-  }
-  .project__tags span {
-    font-size: 7px;
-    padding: 3px 7px;
-  }
-  .project__visual-wrap--compact .project-visual {
-    height: 220px;
-    min-height: 220px;
-  }
-  .project--compact .project__content {
-    padding: 20px 20px 22px;
-  }
-  .mesh__badge--one {
-    top: 18px;
-    right: 14px;
-    padding: 8px 10px;
-  }
-  .mesh__badge--one strong {
-    font-size: 17px;
-  }
-  .mesh__badge--two {
-    bottom: 15px;
-    left: 14px;
-  }
-  .mesh__label {
-    display: none;
-  }
-  .mesh__node--core {
-    width: 64px;
-    height: 64px;
-    font-size: 6.5px;
-  }
-  .mesh__node {
-    font-size: 6.5px;
-    padding: 4px 6px;
+  .project {
+    border-radius: 22px;
   }
 
-  .profile-card {
-    padding: 22px;
-  }
-  .profile-card__monogram {
-    font-size: 6.8rem;
-  }
-  .profile-card__badge--one {
-    top: 70px;
-    right: 18px;
-  }
-  .profile-card__badge--two {
-    top: 124px;
-    right: 38px;
-  }
-  .profile-card__rows strong {
-    font-size: 10px;
-  }
-  .profile-card__code {
-    font-size: 7.5px;
-    padding: 13px;
-  }
-  .principle {
-    grid-template-columns: 28px 1fr;
-    gap: 12px;
-  }
-  .principle h3 {
-    font-size: 1.25rem;
+  .project__top {
+    padding: 14px 18px;
   }
 
-  .experience__head {
-    display: block;
-  }
-  .experience__head h2 {
-    font-size: clamp(2.2rem, 8.4vw, 3.4rem);
-  }
-  .experience__head > p {
-    margin: 18px 0 18px;
-  }
-  .job__heading {
-    display: block;
-  }
-  .job__badge {
-    margin-top: 10px;
-  }
-  .education {
-    flex-wrap: wrap;
-    gap: 14px;
+  .project__main {
     padding: 18px;
   }
-  .education__label {
-    writing-mode: horizontal-tb;
-    transform: none;
+
+  .project__title {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+  }
+
+  .project__metrics {
+    gap: 10px;
+  }
+
+  .project__metrics strong {
+    font-size: 1.05rem;
+  }
+
+  .project__metrics > div > em {
+    font-size: 10px;
+  }
+
+  .case__grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .case__inner {
+    padding: 22px 18px 26px;
+  }
+
+  .work__more {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .diagram__canvas svg {
+    padding: 8px 8px 2px;
+  }
+
+  .diagram__caption {
+    font-size: 7px;
+  }
+
+  .about__grid {
+    gap: 28px;
+  }
+
+  .profile {
+    padding: 22px;
+  }
+
+  .profile__mark {
+    height: 140px;
+  }
+
+  .profile__rows > div {
+    padding: 8px 0;
+  }
+
+  .principle {
+    grid-template-columns: 28px minmax(0, 1fr);
+    padding: 18px 0;
+  }
+
+  .job {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 22px 0 26px;
+  }
+
+  .job__rail {
+    display: none;
+  }
+
+  .job__when {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 0;
+  }
+
+  .job__when > span:last-child {
+    font-size: 10.5px;
+  }
+
+  .job__body {
+    padding-left: 0;
+  }
+
+  .credentials {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-card {
+    padding: 22px;
+  }
+
+  .stack__languages .chips {
     width: 100%;
-  }
-  .education__mark {
-    font-size: 18px;
-  }
-
-  .stack-row {
-    grid-template-columns: 26px minmax(0, 1fr) 32px;
-    padding-block: 20px;
-  }
-  .stack-row h3 {
-    font-size: 1.2rem;
-  }
-  .stack-row__items span {
-    font-size: 6.8px;
-    padding: 3px 6px;
-  }
-
-  .stats {
-    margin-bottom: 34px;
-  }
-  .stat {
-    padding: 22px 16px;
-  }
-  .stat strong {
-    font-size: clamp(2.4rem, 10vw, 3.2rem);
-  }
-  .stat > span {
-    font-size: 6.8px;
-  }
-  .award {
-    min-height: 310px;
-    padding: 24px 22px;
-  }
-  .award__rank {
-    margin-top: 26px;
-  }
-  .award__spark {
-    top: 20px;
-    right: 20px;
-    font-size: 26px;
+    margin-left: 0;
   }
 
   .contact {
     padding-bottom: 80px;
   }
+
   .contact__title {
-    font-size: clamp(2.55rem, 10vw, 4.2rem);
+    max-width: 14ch;
+    font-size: clamp(2.6rem, 11vw, 4.6rem);
   }
-  .contact__top {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 14px;
+
+  .contact__main {
+    padding: 22px;
   }
-  .contact__grid {
-    margin-top: 34px;
-    padding-top: 28px;
-  }
-  .contact__email-wrap {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
+
   .contact__email {
-    font-size: clamp(1.08rem, 5vw, 1.55rem);
+    gap: 7px;
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
   }
-  .copy-btn {
-    margin-left: 0;
-  }
-  .contact__actions .btn {
-    flex: 1;
-    min-width: 205px;
-  }
-  .contact__aside {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .contact__aside .contact__detail:last-child {
-    grid-column: auto;
+
+  .contact__email-row {
+    gap: 10px;
   }
 
   .footer__top {
-    gap: 16px;
+    flex-wrap: wrap;
   }
-  .footer__meta {
+
+  .footer__nav {
     order: 3;
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    gap: 14px;
   }
-  .footer__meta span:last-child {
-    display: inline;
-  }
-  .footer__wordmark {
-    font-size: 11vw;
-    margin-top: 34px;
-  }
+
   .footer__bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
-    padding-bottom: 22px;
+    gap: 6px;
   }
 }
 
-@media (max-width: 520px) {
-  .hero {
-    padding-top: 96px;
+@media (max-width: 560px) {
+  .consent {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    width: auto;
+    padding: 14px 15px;
+    border-radius: 16px;
   }
-  .nav {
-    padding-block: 16px;
+
+  .contact__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .nav.is-scrolled {
-    padding-block: 10px;
+
+  .stats {
+    grid-template-columns: 1fr;
   }
-  .brand__mark {
-    font-size: 22px;
+
+  .stat,
+  .stat:not(:first-child) {
+    padding: 20px 0;
+    border-left: 0;
   }
-  .nav__meta {
-    gap: 0;
+
+  .stat:not(:first-child) {
+    border-top: 1px solid var(--line);
   }
-  .hero__meta > span:nth-child(2) {
+
+  .stat__note {
+    max-width: 36ch;
+  }
+
+  .hero__specs .spec:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .project__badges {
+    gap: 6px;
+  }
+
+  .project__badges .mono-label {
     display: none;
   }
-  .hero__meta {
-    justify-content: flex-start;
+
+  .contact__email .icon {
+    display: none;
   }
+
+  .toast {
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    justify-content: center;
+    transform: translateY(14px);
+  }
+
+  .toast.is-visible {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
   .hero__title {
-    font-size: clamp(2.4rem, 10.8vw, 4.4rem);
-    letter-spacing: -0.08em;
+    font-size: 17.8vw;
   }
-  .hero__role {
-    margin-top: 16px;
-    font-size: 8px;
+
+  .hero__role .hero__sep {
+    display: none;
   }
+
   .hero__actions {
     flex-direction: column;
+    align-items: stretch;
   }
+
   .hero__actions .btn {
     width: 100%;
-    flex: none;
-    min-width: 0;
-  }
-  .hero__stats {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hero__stat {
-    gap: 7px;
-    padding: 9px 10px;
-  }
-  .hero__stat-value {
-    font-size: 1.28rem;
-  }
-  .hero__stat-label {
-    font-size: 6.4px;
-    letter-spacing: 0.03em;
-  }
-  .hero__stat:nth-child(3) {
-    border-bottom: 0;
   }
 
-  .section {
-    padding-block: 70px;
+  .project__top {
+    padding: 12px 14px;
   }
-  .section-head h2 {
-    font-size: clamp(1.95rem, 8.8vw, 2.9rem);
+
+  .project__main {
+    padding: 16px;
   }
-  .label {
-    font-size: 8.5px;
-  }
-  .label::after {
-    width: 26px;
-  }
-  .project__topline {
-    gap: 10px;
-  }
-  .project__tags {
-    display: none;
-  }
-  .project--feature .project__tags {
-    display: flex;
-  }
-  .project--feature .project-visual {
-    height: 320px;
-    min-height: 320px;
-  }
+
   .project__metrics strong {
-    font-size: 1.2rem;
-  }
-  .project__metrics span {
-    font-size: 6.5px;
-  }
-  .project__foot {
-    gap: 12px;
-  }
-  .project__note {
-    font-size: 6.6px;
-  }
-  .mesh__node--a { left: 18%; top: 20%; }
-  .mesh__node--c { left: 82%; top: 20%; }
-  .mesh__node--d { left: 19%; top: 78%; }
-  .mesh__node--f { left: 81%; top: 78%; }
-  .mesh__badge--two {
-    display: none;
-  }
-  .nutrition__gauge {
-    width: 132px;
-    height: 132px;
-  }
-  .nutrition__ring-inner strong {
-    font-size: 30px;
-  }
-  .farming__field {
-    bottom: 66px;
+    font-size: 0.98rem;
   }
 
-  .profile-card__badge--two {
-    display: none;
+  .project__metrics span {
+    font-size: 7.5px;
   }
-  .profile-card__rows > div {
-    gap: 10px;
-  }
-  .profile-card__rows span {
-    font-size: 6.8px;
-  }
-  .profile-card__rows strong {
+
+  .project__metrics > div > em {
     font-size: 9.5px;
   }
-  .profile-card__code {
-    font-size: 7px;
-  }
-  .about__chips span {
-    font-size: 6.8px;
-    padding: 4px 7px;
+
+  .diagram__bar {
+    padding: 9px 10px;
   }
 
-  .experience__head h2 {
-    font-size: clamp(2rem, 8.6vw, 2.8rem);
-  }
-  .job__heading h3 {
-    font-size: 1.15rem;
-  }
-  .job__list li {
-    font-size: 10.8px;
-  }
-  .job__tags span {
-    font-size: 6.4px;
+  .diagram__caption span:last-child {
+    display: none;
   }
 
-  .stack-row h3 {
-    font-size: 1.1rem;
-  }
-  .stack-row > p {
-    font-size: 6.6px;
-  }
-  .stack-row__num {
-    font-size: 7px;
+  .case-toggle {
+    width: 100%;
+    justify-content: space-between;
   }
 
-  .stat strong {
-    font-size: clamp(2.1rem, 9vw, 2.8rem);
+  .about__quote {
+    font-size: 1.7rem;
   }
-  .stat > span {
-    font-size: 6.2px;
+
+  .profile__mark {
+    height: 125px;
   }
-  .stat {
-    padding: 18px 12px;
+
+  .profile__orbit {
+    width: 160px;
+    height: 160px;
   }
-  .award__rank span {
-    font-size: 3.1rem;
+
+  .contact__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .award > p {
-    font-size: 11.5px;
+
+  .contact__actions .btn {
+    width: 100%;
   }
-  .award__foot span {
-    font-size: 6.4px;
+
+  .contact__email {
+    font-size: 1.05rem;
   }
 
   .contact__title {
-    font-size: clamp(2.25rem, 10.4vw, 3.2rem);
-  }
-  .contact__title-serif {
-    letter-spacing: -0.035em;
-  }
-  .contact__actions {
-    flex-direction: column;
-  }
-  .contact__actions .btn {
-    width: 100%;
-    flex: none;
-    min-width: 0;
+    font-size: 2.5rem;
   }
 
-  .footer__meta {
-    font-size: 6.6px;
-  }
-  .footer__wordmark {
-    font-size: 11vw;
-  }
-  .footer__bottom {
-    font-size: 6.2px;
+  .footer__top-link {
+    display: none;
   }
 }
 
 @media (max-width: 400px) {
-  .hero__lede {
-    font-size: 12.5px;
+  .hero__title {
+    font-size: 18vw;
   }
-  .profile-card__badge--one {
-    display: none;
+
+  .hero__availability {
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
   }
-  .profile-card__monogram {
-    font-size: 5.8rem;
+
+  .nav__shell {
+    height: 54px;
   }
-  .section-head h2 {
-    font-size: 1.9rem;
+
+  .brand {
+    gap: 9px;
+    font-size: 12px;
   }
-  .stack-row__items span:nth-child(n + 5) {
-    display: none;
+
+  .brand__mark {
+    width: 32px;
+    height: 32px;
   }
-  .stat > span br {
-    display: none;
+
+  .project__badges .pill {
+    font-size: 8.5px;
+    padding-inline: 8px;
+  }
+
+  .case-toggle {
+    font-size: 12px;
+  }
+
+  .contact__title {
+    font-size: 2.3rem;
   }
 }

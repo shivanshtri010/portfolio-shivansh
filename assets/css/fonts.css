@@ -1,9 +1,9 @@
 @font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('../fonts/instrument-serif-italic-400.woff2') format('woff2');
+  src: url('../fonts/geist-normal-100-900.woff2') format('woff2');
 }
 
 @font-face {
@@ -23,17 +23,9 @@
 }
 
 @font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 200 800;
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
   font-display: swap;
-  src: url('../fonts/manrope-normal-200-800.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Syne';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url('../fonts/syne-normal-400-800.woff2') format('woff2');
+  src: url('../fonts/instrument-serif-italic-400.woff2') format('woff2');
 }
