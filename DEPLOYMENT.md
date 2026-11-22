@@ -8,7 +8,7 @@ Everything below can run on free tiers. The only possible recurring cost is the 
 
 - **Deployed:** <https://shivanshtri010.github.io/portfolio-shivansh/> — GitHub Pages, Actions source, HTTPS enforced. The repository is public and its homepage points at this URL.
 - The site deploys to the default project URL, **`https://shivanshtri010.github.io/portfolio-shivansh/`**.
-- `assets/js/config.js` ships with **empty** `posthogKey` and `cloudflareToken` values. That is intentional. With both empty, no analytics script loads, no consent banner appears, no network requests leave the page, and every other feature works normally.
+- PostHog is **configured** in `assets/js/config.js` (US cloud project, consent-gated); `cloudflareToken` is still **empty**. With a key set, the consent banner appears, and no analytics script loads or network request leaves the page until the visitor chooses **Allow analytics**. If both keys are empty again, the banner is skipped entirely and the site works normally.
 - There is **no `CNAME` file** and **no custom domain** configured yet. Do not create one until the domain is registered and ready; the deployment workflow only copies a `CNAME` file if one exists.
 - `404.html` uses `<base href="/portfolio-shivansh/">` so its fonts, styles and links resolve from any missing sub-path. Change this to `/` when the custom domain goes live, or the 404 page will look for assets under the old project path.
 - The absolute URLs in `index.html`, `privacy.html`, `sitemap.xml`, `robots.txt` and `config.js` point at the GitHub Pages URL above. They must all change together when the domain goes live (section 4.3).
@@ -187,8 +187,6 @@ GitHub Pages is free for public repositories. The custom domain is free to attac
 
 The site ships with a consent-gated integration. No PostHog request is made until the visitor chooses **Allow analytics**.
 
-### 5.1 Create the project
-
 ### 5.1 Create the project and add the key
 
 1. Create a free account at <https://posthog.com>.
@@ -204,7 +202,7 @@ posthogHost: "https://us.i.posthog.com" // or https://eu.i.posthog.com
 5. Commit and deploy. Never put a personal API key here; only the project key is browser-safe.
 6. Load the live site in a private window and confirm the consent banner appears after about a second.
 
-**With the key left empty** (the current state), `analytics.js` exits before creating a banner, loading a script or sending a request. The site is fully functional and silently skips analytics. Cloudflare and PostHog are independent: setting only one key enables only that tool.
+**Current state:** PostHog is configured (US cloud, project key ending `…STTPKZ`), so the consent banner appears on the live site and PostHog loads only after **Allow analytics**. Cloudflare is still unconfigured. If you empty `posthogKey` again, `analytics.js` exits before creating a banner, loading a script or sending a request; the site stays fully functional. Cloudflare and PostHog are independent: setting only one key enables only that tool.
 
 Cloudflare's token goes in the same file:
 
@@ -217,8 +215,10 @@ cloudflareToken: "REPLACE_WITH_YOUR_BEACON_TOKEN"
 
 In PostHog:
 
-- **Autocapture** — on (the site also sends named events for important actions).
-- **Session replay** — on. Inputs are masked in code; elements with `.ph-mask` are masked in recordings.
+- **Product Analytics** — on (the site also sends named events for important actions).
+- **Web Analytics** — on, for traffic and referrer summaries.
+- **Autocapture** — on.
+- **Session replay** — off in this project. The code is already prepared (`maskAllInputs`, `.ph-mask`) and replays start working once you enable it under **Settings → Session replay**; the snippet is not changed.
 - **Heatmaps** — on, if available on your plan.
 - **Discard client IP data** — enable if you want to minimise IP retention. PostHog may still derive coarse geography depending on project settings.
 - **Person profiles** — the code uses `person_profiles: "identified_only"`; anonymous visitors should not get full profiles.
