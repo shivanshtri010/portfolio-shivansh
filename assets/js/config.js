@@ -14,7 +14,7 @@ window.PORTFOLIO_CONFIG = {
 
   // PostHog → Project settings → Project API key (public).
   // Example: "phc_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  posthogKey: "",
+  posthogKey: "phc_yrE9Hqi4WUuwfexAdqoXYAj8LG6ZxVP3mrzLcuSTTPKZ",
   posthogHost: "https://us.i.posthog.com",
 
   // Cloudflare → Web Analytics → Add a site → JS snippet token.
