@@ -671,6 +671,76 @@ rect.d-fill {
   }
 }
 
+/* ---------- Interactive diagram stepper ---------- */
+
+.d-packet {
+  fill: var(--accent);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 4px rgba(200, 245, 111, 0.7));
+}
+
+.js .diagram[data-stepper] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.diagram[data-stepper]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.diagram[data-stepper] [data-step] {
+  transition: opacity 0.4s ease;
+}
+
+.diagram.is-stepping [data-step] {
+  opacity: 0.24;
+}
+
+.diagram.is-stepping [data-step].is-active {
+  opacity: 1;
+}
+
+.diagram.is-stepping [data-step].is-active rect {
+  stroke: rgba(200, 245, 111, 0.72);
+  filter: drop-shadow(0 0 7px rgba(200, 245, 111, 0.3));
+}
+
+.diagram.is-stepping [data-step].is-active text {
+  fill: #e9ffcc;
+}
+
+.diagram.is-stepping [data-step].is-active text.d-sub,
+.diagram.is-stepping [data-step].is-active text.d-label {
+  fill: rgba(220, 255, 161, 0.7);
+}
+
+.diagram__caption .diagram__step {
+  color: var(--text-2);
+  transition: color 0.3s ease;
+}
+
+.js .diagram[data-stepper]:not(.is-stepping) .diagram__step::after {
+  content: " · tap to step";
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+.diagram.is-stepping .diagram__step {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagram[data-stepper] [data-step],
+  .diagram__caption .diagram__step {
+    transition: none;
+  }
+
+  .d-packet {
+    display: none;
+  }
+}
+
 /* ---------- About ---------- */
 
 .about {

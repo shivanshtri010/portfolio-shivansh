@@ -255,209 +255,9 @@
           <p data-reveal>Four builds that show how I think: service boundaries, failure paths, cache strategy, model placement. Each one shipped, measured, and documented.</p>
         </div>
 
-        <article class="project" data-reveal data-glow>
+<article class="project" data-reveal data-glow>
           <div class="project__top">
             <span class="project__index">01 / 04</span>
-            <div class="project__badges">
-              <span class="pill">Distributed backend</span>
-              <span class="mono-label">2025</span>
-            </div>
-          </div>
-
-          <div class="project__main">
-            <div class="project__content">
-              <h3 class="project__title">E-Commerce <em>Microservices</em> Platform</h3>
-              <p class="project__summary">A commerce backend split into independent user, product, order and payment services — synchronous where the request needs an answer, event-driven where it does not.</p>
-              <div class="project__metrics">
-                <div><span>Impact</span><strong>−40%</strong><em>API latency</em></div>
-                <div><span>Scope</span><strong>4</strong><em>domain services</em></div>
-                <div><span>Auth</span><strong>JWT</strong><em>+ RBAC</em></div>
-              </div>
-              <div class="project__actions">
-                <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-commerce">
-                  <span class="case-toggle__label">Read case study</span>
-                  <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
-                </button>
-                <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              </div>
-            </div>
-
-            <div class="project__visual">
-              <div class="diagram" aria-hidden="true">
-                <div class="diagram__bar">
-                  <span class="mono-label">System / 01</span>
-                  <span class="diagram__legend"><i></i>async path</span>
-                </div>
-                <div class="diagram__canvas">
-                  <svg viewBox="0 0 520 300" role="presentation" focusable="false">
-                    <path class="d-line" d="M140 33h70" />
-                    <path class="d-line" d="M260 50v22" />
-                    <path class="d-line" d="M70 72h348" />
-                    <path class="d-line" d="M70 72v14M186 72v14M302 72v14M418 72v14" />
-                    <g class="d-node"><rect x="40" y="16" width="100" height="34" rx="7" /><text x="90" y="37" text-anchor="middle">CLIENT</text></g>
-                    <g class="d-node"><rect x="210" y="16" width="100" height="34" rx="7" /><text x="260" y="37" text-anchor="middle">API GATEWAY</text></g>
-                    <g class="d-node"><rect x="22" y="86" width="96" height="38" rx="7" /><text x="70" y="109" text-anchor="middle">USER</text></g>
-                    <g class="d-node"><rect x="138" y="86" width="96" height="38" rx="7" /><text x="186" y="109" text-anchor="middle">PRODUCT</text></g>
-                    <g class="d-node"><rect x="254" y="86" width="96" height="38" rx="7" /><text x="302" y="109" text-anchor="middle">ORDER</text></g>
-                    <g class="d-node"><rect x="370" y="86" width="96" height="38" rx="7" /><text x="418" y="109" text-anchor="middle">PAYMENT</text></g>
-                    <path class="d-line d-line--accent" d="M302 124v46M418 124v46" />
-                    <g class="d-node d-node--accent"><rect x="90" y="170" width="340" height="38" rx="8" /><text x="260" y="193" text-anchor="middle">APACHE KAFKA / ORDER EVENTS</text></g>
-                    <text class="d-label" x="312" y="152">order.created</text>
-                    <text class="d-label" x="428" y="152">payment.captured</text>
-                    <path class="d-line d-line--faint" d="M22 232H498" />
-                    <circle class="d-dot" cx="28" cy="252" r="2.5" /><text class="d-label" x="38" y="255">JWT + RBAC</text>
-                    <circle class="d-dot d-dot--muted" cx="166" cy="252" r="2.5" /><text class="d-label" x="176" y="255">MYSQL / JPA</text>
-                    <circle class="d-dot d-dot--muted" cx="310" cy="252" r="2.5" /><text class="d-label" x="320" y="255">REDIS CACHE</text>
-                    <text class="d-label" x="22" y="285">4 DOMAIN SERVICES / INDEPENDENT DEPLOYMENTS</text>
-                    <text class="d-label" x="362" y="285">ASYNC ORDER FLOW</text>
-                  </svg>
-                </div>
-                <div class="diagram__caption"><span>REST / Kafka / Redis</span><span>Spring Boot</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="case" id="case-commerce">
-            <div class="case__clip">
-              <div class="case__inner">
-                <div class="case__grid">
-                  <div class="case__block">
-                    <span class="mono-label">The problem</span>
-                    <p>Commerce backends tend to start as one deployable. Every change carries the risk of the whole surface, and a slow payment provider can hold up the catalogue.</p>
-                  </div>
-                  <div class="case__block">
-                    <span class="mono-label">The approach</span>
-                    <p>Split the domain into independently deployable services, keep synchronous REST for reads and validation, and move order state transitions onto Kafka so downstream work does not hold the request open.</p>
-                  </div>
-                  <div class="case__block">
-                    <span class="mono-label">Architecture</span>
-                    <ul>
-                      <li>Spring Boot services for user, product, order and payment.</li>
-                      <li>JWT and Spring Security RBAC at the edge of every protected route.</li>
-                      <li>MySQL via Hibernate/JPA; Redis cache-aside on read-heavy endpoints.</li>
-                      <li>Docker per service, with JUnit coverage around domain logic.</li>
-                    </ul>
-                  </div>
-                  <div class="case__block">
-                    <span class="mono-label">Key decisions</span>
-                    <ul>
-                      <li>Cache-aside over write-through: reads dominate, and seconds-old product data is acceptable.</li>
-                      <li>Events over distributed transactions: order state publishes to Kafka instead of spanning services in one transaction.</li>
-                      <li>One container recipe per service, so local and CI environments behave the same way.</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="case__foot">
-                  <div class="chips"><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>Redis</span><span>MySQL</span><span>Docker</span></div>
-                  <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub profile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="project project--reverse" data-reveal data-glow>
-          <div class="project__top">
-            <span class="project__index">02 / 04</span>
-            <div class="project__badges">
-              <span class="pill">REST API</span>
-              <span class="mono-label">2025</span>
-            </div>
-          </div>
-
-          <div class="project__main">
-            <div class="project__content">
-              <h3 class="project__title">Task Management <em>REST API</em></h3>
-              <p class="project__summary">15+ secured endpoints with JWT and role-based access, pagination and filtering at the query layer, and a Redis cache that keeps repeat reads under 100 ms.</p>
-              <div class="project__metrics">
-                <div><span>Surface</span><strong>15+</strong><em>endpoints</em></div>
-                <div><span>Latency</span><strong>&lt;100<em>ms</em></strong><em>cached reads</em></div>
-                <div><span>Coverage</span><strong>85%</strong><em>JUnit</em></div>
-              </div>
-              <div class="project__actions">
-                <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-task">
-                  <span class="case-toggle__label">Read case study</span>
-                  <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
-                </button>
-                <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              </div>
-            </div>
-
-            <div class="project__visual">
-              <div class="diagram" aria-hidden="true">
-                <div class="diagram__bar">
-                  <span class="mono-label">System / 02</span>
-                  <span class="diagram__legend"><i></i>secure path</span>
-                </div>
-                <div class="diagram__canvas">
-                  <svg viewBox="0 0 520 300" role="presentation" focusable="false">
-                    <path class="d-line" d="M260 48v22" />
-                    <path class="d-line" d="M350 90h30" />
-                    <path class="d-line" d="M260 110v18M125 128h270M125 128v14M260 128v14M395 128v14" />
-                    <g class="d-node"><rect x="210" y="14" width="100" height="34" rx="7" /><text x="260" y="35" text-anchor="middle">CLIENT</text></g>
-                    <g class="d-node"><rect x="170" y="70" width="180" height="40" rx="7" /><text x="260" y="94" text-anchor="middle">SPRING BOOT API</text></g>
-                    <g class="d-node d-node--accent"><rect x="380" y="70" width="110" height="40" rx="7" /><text x="435" y="94" text-anchor="middle">JWT / RBAC</text></g>
-                    <g class="d-node"><rect x="70" y="142" width="110" height="34" rx="7" /><text x="125" y="163" text-anchor="middle">/TASKS</text></g>
-                    <g class="d-node"><rect x="205" y="142" width="110" height="34" rx="7" /><text x="260" y="163" text-anchor="middle">/AUTH</text></g>
-                    <g class="d-node"><rect x="340" y="142" width="110" height="34" rx="7" /><text x="395" y="163" text-anchor="middle">/USERS</text></g>
-                    <path class="d-line" d="M125 176v18M260 176v18M395 176v18M125 194h270M170 194v18M350 194v18" />
-                    <g class="d-node"><rect x="100" y="212" width="140" height="38" rx="7" /><text x="170" y="235" text-anchor="middle">MYSQL</text></g>
-                    <g class="d-node"><rect x="280" y="212" width="140" height="38" rx="7" /><text x="350" y="235" text-anchor="middle">REDIS</text></g>
-                    <g class="d-badge"><rect x="390" y="14" width="100" height="34" rx="7" /><text x="440" y="35" text-anchor="middle">P95 &lt; 100MS</text></g>
-                    <text class="d-label" x="22" y="276">JUNIT COVERAGE</text>
-                    <rect x="130" y="271" width="300" height="5" rx="2.5" class="d-track" />
-                    <rect x="130" y="271" width="255" height="5" rx="2.5" class="d-fill" />
-                    <text class="d-label" x="442" y="277">85%</text>
-                    <text class="d-label" x="22" y="292">15+ ENDPOINTS / PAGINATION / FILTERING</text>
-                  </svg>
-                </div>
-                <div class="diagram__caption"><span>Auth / query / cache</span><span>Spring Security</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="case" id="case-task">
-            <div class="case__clip">
-              <div class="case__inner">
-                <div class="case__grid">
-                  <div class="case__block">
-                    <span class="mono-label">The problem</span>
-                    <p>A task product needs secure access, predictable list performance, and enough test coverage to change the API without fear.</p>
-                  </div>
-                  <div class="case__block">
-                    <span class="mono-label">The approach</span>
-                    <p>Fifteen-plus REST endpoints behind JWT authentication and role-based authorization. Pagination and filtering happen in SQL, and repeated reads go through Redis.</p>
-                  </div>
-                  <div class="case__block">
-                    <span class="mono-label">Architecture</span>
-                    <ul>
-                      <li>Spring Boot controllers with a Spring Security filter chain.</li>
-                      <li>MySQL persistence, with pagination and filtering pushed into queries.</li>
-                      <li>Redis cache-aside for repeated reads.</li>
-                      <li>JUnit suite covering endpoint and authorization behaviour.</li>
-                    </ul>
-                  </div>
-                  <div class="case__block">
-                    <span class="mono-label">Key decisions</span>
-                    <ul>
-                      <li>Authorize at the filter chain, not in every controller.</li>
-                      <li>Paginate and filter in SQL; never load a table and trim it in memory.</li>
-                      <li>Cache reads, not writes, with invalidation close to the write path.</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="case__foot">
-                  <div class="chips"><span>Spring Boot</span><span>Spring Security</span><span>JWT</span><span>MySQL</span><span>Redis</span><span>JUnit</span></div>
-                  <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub profile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="project" data-reveal data-glow>
-          <div class="project__top">
-            <span class="project__index">03 / 04</span>
             <div class="project__badges">
               <span class="pill pill--accent">HackFest winner</span>
               <span class="mono-label">2024</span>
@@ -483,14 +283,14 @@
             </div>
 
             <div class="project__visual">
-              <div class="diagram" aria-hidden="true">
+              <div class="diagram" data-stepper role="button" tabindex="0" aria-label="Interactive system diagram. Activate to step through the flow.">
                 <div class="diagram__bar">
-                  <span class="mono-label">System / 03</span>
+                  <span class="mono-label">System / 01</span>
                   <span class="diagram__legend"><i></i>inference path</span>
                 </div>
                 <div class="diagram__canvas">
-                  <svg viewBox="0 0 520 300" role="presentation" focusable="false">
-                    <g class="d-node d-node--input">
+                  <svg viewBox="0 0 520 300" role="presentation" focusable="false" aria-hidden="true">
+                    <g class="d-node d-node--input" data-step="1" data-step-label="Meal image captured">
                       <rect x="24" y="46" width="120" height="116" rx="10" />
                       <circle class="d-plate" cx="84" cy="94" r="28" />
                       <circle class="d-plate d-plate--inner" cx="84" cy="94" r="15" />
@@ -500,10 +300,10 @@
                     </g>
                     <path class="d-line" d="M144 104h36" />
                     <text class="d-label" x="146" y="96">IMAGE</text>
-                    <g class="d-node"><rect x="180" y="78" width="120" height="52" rx="8" /><text x="240" y="101" text-anchor="middle">SPRING BOOT</text><text class="d-sub" x="240" y="116" text-anchor="middle">REST API</text></g>
+                    <g class="d-node" data-step="2" data-step-label="Uploaded to the Spring Boot API"><rect x="180" y="78" width="120" height="52" rx="8" /><text x="240" y="101" text-anchor="middle">SPRING BOOT</text><text class="d-sub" x="240" y="116" text-anchor="middle">REST API</text></g>
                     <path class="d-line d-line--accent" d="M300 104h34" />
                     <text class="d-label" x="302" y="96">INFERENCE</text>
-                    <g class="d-node d-node--model">
+                    <g class="d-node d-node--model" data-step="3" data-step-label="YOLOv8 inference at 94% accuracy">
                       <rect x="336" y="40" width="160" height="128" rx="10" />
                       <circle class="d-ring-track" cx="416" cy="92" r="32" />
                       <circle class="d-ring-fill" cx="416" cy="92" r="32" />
@@ -511,22 +311,26 @@
                       <text class="d-sub" x="416" y="150" text-anchor="middle">YOLOV8</text>
                     </g>
                     <g class="d-badge d-badge--accent"><rect x="360" y="14" width="136" height="26" rx="6" /><text x="428" y="31" text-anchor="middle">1ST / 500+ TEAMS</text></g>
-                    <text class="d-label" x="24" y="204">NUTRITION OUTPUT</text>
-                    <text class="d-label" x="24" y="232">PROTEIN</text>
-                    <rect class="d-track" x="100" y="227" width="300" height="5" rx="2.5" />
-                    <rect class="d-fill" x="100" y="227" width="234" height="5" rx="2.5" />
-                    <text class="d-label" x="420" y="232">78</text>
-                    <text class="d-label" x="24" y="260">CARBS</text>
-                    <rect class="d-track" x="100" y="255" width="300" height="5" rx="2.5" />
-                    <rect class="d-fill d-fill--dim" x="100" y="255" width="192" height="5" rx="2.5" />
-                    <text class="d-label" x="420" y="260">64</text>
-                    <text class="d-label" x="24" y="288">FATS</text>
-                    <rect class="d-track" x="100" y="283" width="300" height="5" rx="2.5" />
-                    <rect class="d-fill d-fill--dim" x="100" y="283" width="126" height="5" rx="2.5" />
-                    <text class="d-label" x="420" y="288">42</text>
+                    <g data-step="4" data-step-label="Structured nutrition returned as JSON">
+                      <text class="d-label" x="24" y="204">NUTRITION OUTPUT</text>
+                      <text class="d-label" x="24" y="232">PROTEIN</text>
+                      <rect class="d-track" x="100" y="227" width="300" height="5" rx="2.5" />
+                      <rect class="d-fill" x="100" y="227" width="234" height="5" rx="2.5" />
+                      <text class="d-label" x="420" y="232">78</text>
+                      <text class="d-label" x="24" y="260">CARBS</text>
+                      <rect class="d-track" x="100" y="255" width="300" height="5" rx="2.5" />
+                      <rect class="d-fill d-fill--dim" x="100" y="255" width="192" height="5" rx="2.5" />
+                      <text class="d-label" x="420" y="260">64</text>
+                      <text class="d-label" x="24" y="288">FATS</text>
+                      <rect class="d-track" x="100" y="283" width="300" height="5" rx="2.5" />
+                      <rect class="d-fill d-fill--dim" x="100" y="283" width="126" height="5" rx="2.5" />
+                      <text class="d-label" x="420" y="288">42</text>
+                    </g>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2.6s" repeatCount="indefinite" path="M144 104h36" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M300 104h34" /></circle>
                   </svg>
                 </div>
-                <div class="diagram__caption"><span>Image → inference → JSON</span><span>Spring Boot / YOLOv8</span></div>
+                <div class="diagram__caption"><span class="diagram__step">Image → inference → JSON</span><span>Spring Boot / YOLOv8</span></div>
               </div>
             </div>
           </div>
@@ -570,9 +374,9 @@
           </div>
         </article>
 
-        <article class="project project--reverse" data-reveal data-glow>
+<article class="project project--reverse" data-reveal data-glow>
           <div class="project__top">
-            <span class="project__index">04 / 04</span>
+            <span class="project__index">02 / 04</span>
             <div class="project__badges">
               <span class="pill pill--accent">GBU Hacked winner</span>
               <span class="mono-label">IoT / AI</span>
@@ -598,22 +402,22 @@
             </div>
 
             <div class="project__visual">
-              <div class="diagram" aria-hidden="true">
+              <div class="diagram" data-stepper role="button" tabindex="0" aria-label="Interactive system diagram. Activate to step through the flow.">
                 <div class="diagram__bar">
-                  <span class="mono-label">System / 04</span>
+                  <span class="mono-label">System / 02</span>
                   <span class="diagram__legend"><i></i>field telemetry</span>
                 </div>
                 <div class="diagram__canvas">
-                  <svg viewBox="0 0 520 300" role="presentation" focusable="false">
+                  <svg viewBox="0 0 520 300" role="presentation" focusable="false" aria-hidden="true">
                     <defs>
                       <pattern id="fieldGrid" width="20" height="20" patternUnits="userSpaceOnUse">
                         <path d="M20 0H0v20" fill="none" stroke="rgba(255,255,255,.055)" stroke-width="1" />
                       </pattern>
                     </defs>
-                    <g class="d-node d-node--field">
+                    <g class="d-node d-node--field" data-step="1" data-step-label="Soil, flow and temperature sensors">
                       <rect x="24" y="44" width="180" height="140" rx="10" />
                       <rect x="25" y="45" width="178" height="138" rx="9" fill="url(#fieldGrid)" stroke="none" />
-                      <text class="d-label" x="36" y="64">FIELD / 04</text>
+                      <text class="d-label" x="36" y="64">FIELD / 02</text>
                       <circle class="d-dot d-dot--muted" cx="60" cy="90" r="3" />
                       <circle class="d-dot" cx="120" cy="78" r="3.5" />
                       <circle class="d-sensor-ring" cx="120" cy="78" r="9" />
@@ -624,13 +428,13 @@
                     </g>
                     <path class="d-line d-line--accent" d="M204 114h32" />
                     <text class="d-label" x="206" y="106">TELEMETRY</text>
-                    <g class="d-node"><rect x="236" y="96" width="96" height="44" rx="8" /><text x="284" y="115" text-anchor="middle">MQTT</text><text class="d-sub" x="284" y="129" text-anchor="middle">BROKER</text></g>
+                    <g class="d-node" data-step="2" data-step-label="Telemetry published over MQTT"><rect x="236" y="96" width="96" height="44" rx="8" /><text x="284" y="115" text-anchor="middle">MQTT</text><text class="d-sub" x="284" y="129" text-anchor="middle">BROKER</text></g>
                     <path class="d-line" d="M332 118h32" />
                     <text class="d-label" x="334" y="110">INGEST</text>
-                    <g class="d-node"><rect x="364" y="96" width="132" height="44" rx="8" /><text x="430" y="115" text-anchor="middle">SPRING BOOT</text><text class="d-sub" x="430" y="129" text-anchor="middle">REST API</text></g>
+                    <g class="d-node" data-step="3" data-step-label="Spring Boot ingests and exposes telemetry"><rect x="364" y="96" width="132" height="44" rx="8" /><text x="430" y="115" text-anchor="middle">SPRING BOOT</text><text class="d-sub" x="430" y="129" text-anchor="middle">REST API</text></g>
                     <path class="d-line d-line--accent" d="M430 140v22H366v38" />
-                    <g class="d-node d-node--accent"><rect x="236" y="200" width="260" height="44" rx="8" /><text x="366" y="219" text-anchor="middle">FINE-TUNED LLAMA 3 8B</text><text class="d-sub" x="366" y="233" text-anchor="middle">IRRIGATION GUIDANCE</text></g>
-                    <g class="d-node d-node--gauge">
+                    <g class="d-node d-node--accent" data-step="4" data-step-label="Llama 3 8B writes irrigation guidance"><rect x="236" y="200" width="260" height="44" rx="8" /><text x="366" y="219" text-anchor="middle">FINE-TUNED LLAMA 3 8B</text><text class="d-sub" x="366" y="233" text-anchor="middle">IRRIGATION GUIDANCE</text></g>
+                    <g class="d-node d-node--gauge" data-step="5" data-step-label="40% less water, measured in the field">
                       <rect x="24" y="200" width="180" height="80" rx="10" />
                       <text class="d-label" x="36" y="222">WATER SAVED</text>
                       <text class="d-value" x="36" y="256">−40%</text>
@@ -640,9 +444,12 @@
                     <g class="d-badge d-badge--accent"><rect x="360" y="14" width="136" height="26" rx="6" /><text x="428" y="31" text-anchor="middle">1ST / GBU HACKED</text></g>
                     <text class="d-label" x="236" y="270">SENSORS → MQTT → API → MODEL</text>
                     <text class="d-label" x="236" y="288">LOW-BANDWIDTH FIELD NETWORK</text>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2.8s" repeatCount="indefinite" path="M204 114h32" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2.8s" begin="0.9s" repeatCount="indefinite" path="M332 118h32" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="4.2s" begin="1.8s" repeatCount="indefinite" path="M430 140v22H366v38" /></circle>
                   </svg>
                 </div>
-                <div class="diagram__caption"><span>Telemetry / inference / guidance</span><span>MQTT / Llama 3</span></div>
+                <div class="diagram__caption"><span class="diagram__step">Telemetry / inference / guidance</span><span>MQTT / Llama 3</span></div>
               </div>
             </div>
           </div>
@@ -679,6 +486,217 @@
                 </div>
                 <div class="case__foot">
                   <div class="chips"><span>IoT</span><span>MQTT</span><span>Spring Boot</span><span>Llama 3 8B</span><span>GBU Hacked</span></div>
+                  <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub profile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+<article class="project" data-reveal data-glow>
+          <div class="project__top">
+            <span class="project__index">03 / 04</span>
+            <div class="project__badges">
+              <span class="pill">Distributed backend</span>
+              <span class="mono-label">2025</span>
+            </div>
+          </div>
+
+          <div class="project__main">
+            <div class="project__content">
+              <h3 class="project__title">E-Commerce <em>Microservices</em> Platform</h3>
+              <p class="project__summary">A commerce backend split into independent user, product, order and payment services — synchronous where the request needs an answer, event-driven where it does not.</p>
+              <div class="project__metrics">
+                <div><span>Impact</span><strong>−40%</strong><em>API latency</em></div>
+                <div><span>Scope</span><strong>4</strong><em>domain services</em></div>
+                <div><span>Auth</span><strong>JWT</strong><em>+ RBAC</em></div>
+              </div>
+              <div class="project__actions">
+                <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-commerce">
+                  <span class="case-toggle__label">Read case study</span>
+                  <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+                </button>
+                <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </div>
+
+            <div class="project__visual">
+              <div class="diagram" data-stepper role="button" tabindex="0" aria-label="Interactive system diagram. Activate to step through the flow.">
+                <div class="diagram__bar">
+                  <span class="mono-label">System / 03</span>
+                  <span class="diagram__legend"><i></i>async path</span>
+                </div>
+                <div class="diagram__canvas">
+                  <svg viewBox="0 0 520 300" role="presentation" focusable="false" aria-hidden="true">
+                    <path class="d-line" d="M140 33h70" />
+                    <path class="d-line" d="M260 50v22" />
+                    <path class="d-line" d="M70 72h348" />
+                    <path class="d-line" d="M70 72v14M186 72v14M302 72v14M418 72v14" />
+                    <g class="d-node" data-step="1" data-step-label="Client calls the edge"><rect x="40" y="16" width="100" height="34" rx="7" /><text x="90" y="37" text-anchor="middle">CLIENT</text></g>
+                    <g class="d-node" data-step="2" data-step-label="API gateway authenticates and routes"><rect x="210" y="16" width="100" height="34" rx="7" /><text x="260" y="37" text-anchor="middle">API GATEWAY</text></g>
+                    <g class="d-node" data-step="3" data-step-label="Independent domain services"><rect x="22" y="86" width="96" height="38" rx="7" /><text x="70" y="109" text-anchor="middle">USER</text></g>
+                    <g class="d-node"><rect x="138" y="86" width="96" height="38" rx="7" /><text x="186" y="109" text-anchor="middle">PRODUCT</text></g>
+                    <g class="d-node"><rect x="254" y="86" width="96" height="38" rx="7" /><text x="302" y="109" text-anchor="middle">ORDER</text></g>
+                    <g class="d-node"><rect x="370" y="86" width="96" height="38" rx="7" /><text x="418" y="109" text-anchor="middle">PAYMENT</text></g>
+                    <path class="d-line d-line--accent" d="M302 124v46M418 124v46" />
+                    <g class="d-node d-node--accent" data-step="4" data-step-label="Order events stream through Kafka"><rect x="90" y="170" width="340" height="38" rx="8" /><text x="260" y="193" text-anchor="middle">APACHE KAFKA / ORDER EVENTS</text></g>
+                    <text class="d-label" x="312" y="152">order.created</text>
+                    <text class="d-label" x="428" y="152">payment.captured</text>
+                    <g data-step="5" data-step-label="Shared platform concerns">
+                      <path class="d-line d-line--faint" d="M22 232H498" />
+                      <circle class="d-dot" cx="28" cy="252" r="2.5" /><text class="d-label" x="38" y="255">JWT + RBAC</text>
+                      <circle class="d-dot d-dot--muted" cx="166" cy="252" r="2.5" /><text class="d-label" x="176" y="255">MYSQL / JPA</text>
+                      <circle class="d-dot d-dot--muted" cx="310" cy="252" r="2.5" /><text class="d-label" x="320" y="255">REDIS CACHE</text>
+                      <text class="d-label" x="22" y="285">4 DOMAIN SERVICES / INDEPENDENT DEPLOYMENTS</text>
+                      <text class="d-label" x="362" y="285">ASYNC ORDER FLOW</text>
+                    </g>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2.4s" repeatCount="indefinite" path="M140 33h70" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2.4s" begin="0.7s" repeatCount="indefinite" path="M70 72h348" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="3.2s" begin="1.4s" repeatCount="indefinite" path="M302 124v46" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="3.2s" begin="2.2s" repeatCount="indefinite" path="M418 124v46" /></circle>
+                  </svg>
+                </div>
+                <div class="diagram__caption"><span class="diagram__step">REST / Kafka / Redis</span><span>Spring Boot</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case" id="case-commerce">
+            <div class="case__clip">
+              <div class="case__inner">
+                <div class="case__grid">
+                  <div class="case__block">
+                    <span class="mono-label">The problem</span>
+                    <p>Commerce backends tend to start as one deployable. Every change carries the risk of the whole surface, and a slow payment provider can hold up the catalogue.</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="mono-label">The approach</span>
+                    <p>Split the domain into independently deployable services, keep synchronous REST for reads and validation, and move order state transitions onto Kafka so downstream work does not hold the request open.</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="mono-label">Architecture</span>
+                    <ul>
+                      <li>Spring Boot services for user, product, order and payment.</li>
+                      <li>JWT and Spring Security RBAC at the edge of every protected route.</li>
+                      <li>MySQL via Hibernate/JPA; Redis cache-aside on read-heavy endpoints.</li>
+                      <li>Docker per service, with JUnit coverage around domain logic.</li>
+                    </ul>
+                  </div>
+                  <div class="case__block">
+                    <span class="mono-label">Key decisions</span>
+                    <ul>
+                      <li>Cache-aside over write-through: reads dominate, and seconds-old product data is acceptable.</li>
+                      <li>Events over distributed transactions: order state publishes to Kafka instead of spanning services in one transaction.</li>
+                      <li>One container recipe per service, so local and CI environments behave the same way.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="case__foot">
+                  <div class="chips"><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>Redis</span><span>MySQL</span><span>Docker</span></div>
+                  <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub profile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+<article class="project project--reverse" data-reveal data-glow>
+          <div class="project__top">
+            <span class="project__index">04 / 04</span>
+            <div class="project__badges">
+              <span class="pill">REST API</span>
+              <span class="mono-label">2025</span>
+            </div>
+          </div>
+
+          <div class="project__main">
+            <div class="project__content">
+              <h3 class="project__title">Task Management <em>REST API</em></h3>
+              <p class="project__summary">15+ secured endpoints with JWT and role-based access, pagination and filtering at the query layer, and a Redis cache that keeps repeat reads under 100 ms.</p>
+              <div class="project__metrics">
+                <div><span>Surface</span><strong>15+</strong><em>endpoints</em></div>
+                <div><span>Latency</span><strong>&lt;100<em>ms</em></strong><em>cached reads</em></div>
+                <div><span>Coverage</span><strong>85%</strong><em>JUnit</em></div>
+              </div>
+              <div class="project__actions">
+                <button class="case-toggle" type="button" aria-expanded="false" aria-controls="case-task">
+                  <span class="case-toggle__label">Read case study</span>
+                  <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+                </button>
+                <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </div>
+
+            <div class="project__visual">
+              <div class="diagram" data-stepper role="button" tabindex="0" aria-label="Interactive system diagram. Activate to step through the flow.">
+                <div class="diagram__bar">
+                  <span class="mono-label">System / 04</span>
+                  <span class="diagram__legend"><i></i>secure path</span>
+                </div>
+                <div class="diagram__canvas">
+                  <svg viewBox="0 0 520 300" role="presentation" focusable="false" aria-hidden="true">
+                    <path class="d-line" d="M260 48v22" />
+                    <path class="d-line" d="M350 90h30" />
+                    <path class="d-line" d="M260 110v18M125 128h270M125 128v14M260 128v14M395 128v14" />
+                    <g class="d-node" data-step="1" data-step-label="Client sends a JWT"><rect x="210" y="14" width="100" height="34" rx="7" /><text x="260" y="35" text-anchor="middle">CLIENT</text></g>
+                    <g class="d-node" data-step="2" data-step-label="Spring Boot validates the token"><rect x="170" y="70" width="180" height="40" rx="7" /><text x="260" y="94" text-anchor="middle">SPRING BOOT API</text></g>
+                    <g class="d-node d-node--accent" data-step="3" data-step-label="Role checked at the filter chain"><rect x="380" y="70" width="110" height="40" rx="7" /><text x="435" y="94" text-anchor="middle">JWT / RBAC</text></g>
+                    <g class="d-node" data-step="4" data-step-label="Authorized route is reached"><rect x="70" y="142" width="110" height="34" rx="7" /><text x="125" y="163" text-anchor="middle">/TASKS</text></g>
+                    <g class="d-node"><rect x="205" y="142" width="110" height="34" rx="7" /><text x="260" y="163" text-anchor="middle">/AUTH</text></g>
+                    <g class="d-node"><rect x="340" y="142" width="110" height="34" rx="7" /><text x="395" y="163" text-anchor="middle">/USERS</text></g>
+                    <path class="d-line" d="M125 176v18M260 176v18M395 176v18M125 194h270M170 194v18M350 194v18" />
+                    <g class="d-node" data-step="5" data-step-label="Paginated query against MySQL"><rect x="100" y="212" width="140" height="38" rx="7" /><text x="170" y="235" text-anchor="middle">MYSQL</text></g>
+                    <g class="d-node" data-step="6" data-step-label="Repeat reads served from Redis"><rect x="280" y="212" width="140" height="38" rx="7" /><text x="350" y="235" text-anchor="middle">REDIS</text></g>
+                    <g class="d-badge"><rect x="390" y="14" width="100" height="34" rx="7" /><text x="440" y="35" text-anchor="middle">P95 &lt; 100MS</text></g>
+                    <g data-step="7" data-step-label="85% of behaviour covered by JUnit">
+                      <text class="d-label" x="22" y="276">JUNIT COVERAGE</text>
+                      <rect x="130" y="271" width="300" height="5" rx="2.5" class="d-track" />
+                      <rect x="130" y="271" width="255" height="5" rx="2.5" class="d-fill" />
+                      <text class="d-label" x="442" y="277">85%</text>
+                      <text class="d-label" x="22" y="292">15+ ENDPOINTS / PAGINATION / FILTERING</text>
+                    </g>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2s" repeatCount="indefinite" path="M260 48v22" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2s" begin="0.6s" repeatCount="indefinite" path="M350 90h30" /></circle>
+                    <circle class="d-packet" r="2.6"><animateMotion dur="2.4s" begin="1.1s" repeatCount="indefinite" path="M260 110v18" /></circle>
+                  </svg>
+                </div>
+                <div class="diagram__caption"><span class="diagram__step">Auth / query / cache</span><span>Spring Security</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case" id="case-task">
+            <div class="case__clip">
+              <div class="case__inner">
+                <div class="case__grid">
+                  <div class="case__block">
+                    <span class="mono-label">The problem</span>
+                    <p>A task product needs secure access, predictable list performance, and enough test coverage to change the API without fear.</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="mono-label">The approach</span>
+                    <p>Fifteen-plus REST endpoints behind JWT authentication and role-based authorization. Pagination and filtering happen in SQL, and repeated reads go through Redis.</p>
+                  </div>
+                  <div class="case__block">
+                    <span class="mono-label">Architecture</span>
+                    <ul>
+                      <li>Spring Boot controllers with a Spring Security filter chain.</li>
+                      <li>MySQL persistence, with pagination and filtering pushed into queries.</li>
+                      <li>Redis cache-aside for repeated reads.</li>
+                      <li>JUnit suite covering endpoint and authorization behaviour.</li>
+                    </ul>
+                  </div>
+                  <div class="case__block">
+                    <span class="mono-label">Key decisions</span>
+                    <ul>
+                      <li>Authorize at the filter chain, not in every controller.</li>
+                      <li>Paginate and filter in SQL; never load a table and trim it in memory.</li>
+                      <li>Cache reads, not writes, with invalidation close to the write path.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="case__foot">
+                  <div class="chips"><span>Spring Boot</span><span>Spring Security</span><span>JWT</span><span>MySQL</span><span>Redis</span><span>JUnit</span></div>
                   <a class="text-link" href="https://github.com/shivanshtri010" target="_blank" rel="noopener">GitHub profile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
                 </div>
               </div>

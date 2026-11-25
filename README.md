@@ -39,7 +39,7 @@ assets/media/                 Résumé PDF and the 1200×630 social card
 
 ## Editing
 
-- **Copy and projects:** everything lives in `index.html`. Each project card is self-contained: summary, stack, metrics, inline SVG architecture diagram and an expandable case study.
+- **Copy and projects:** everything lives in `index.html`. Each project card is self-contained: summary, stack, metrics, clickable inline SVG architecture diagram and an expandable case study. Click (or focus and press Enter on) a diagram to step through its request flow; it resets when you click past the last step, press Escape, or move focus away.
 - **Links:** LinkedIn, GitHub, LeetCode, email and phone appear in `index.html` and in the JSON-LD block at the top of the file.
 - **Résumé:** replace `assets/media/Shivansh_Tripathi_Resume.pdf` and keep the filename, or update the three download links.
 - **Colours and type:** edit the custom properties at the top of `assets/css/main.css`.

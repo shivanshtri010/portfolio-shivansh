@@ -307,6 +307,56 @@
     });
   });
 
+  /* ---------- 06b · Interactive architecture diagrams ---------- */
+
+  $$("[data-stepper]").forEach(function (diagram) {
+    var steps = $$("[data-step]", diagram);
+    var caption = $(".diagram__step", diagram);
+    var baseLabel = caption ? caption.textContent : "";
+    var baseAria = diagram.getAttribute("aria-label");
+    var index = -1;
+
+    if (!steps.length) return;
+
+    function reset() {
+      index = -1;
+      diagram.classList.remove("is-stepping");
+      steps.forEach(function (step) { step.classList.remove("is-active"); });
+      if (caption) caption.textContent = baseLabel;
+      diagram.setAttribute("aria-label", baseAria);
+    }
+
+    function show(next) {
+      index = next;
+      diagram.classList.add("is-stepping");
+      steps.forEach(function (step, i) {
+        step.classList.toggle("is-active", i === index);
+      });
+
+      var label = steps[index].getAttribute("data-step-label") || "";
+      if (caption) caption.textContent = index + 1 + " / " + steps.length + " · " + label;
+      diagram.setAttribute("aria-label", "Step " + (index + 1) + " of " + steps.length + ": " + label + ". Activate for the next step.");
+    }
+
+    function advance() {
+      if (index + 1 >= steps.length) reset();
+      else show(index + 1);
+    }
+
+    diagram.addEventListener("click", advance);
+    diagram.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        advance();
+      } else if (event.key === "Escape") {
+        reset();
+      }
+    });
+    diagram.addEventListener("blur", function () {
+      if (index >= 0) reset();
+    });
+  });
+
   /* ---------- 07 · Pointer light on glass surfaces ---------- */
 
   if (finePointer && !reduceMotion) {
