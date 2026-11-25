@@ -1626,3 +1626,20 @@ rect.d-fill {
   color: var(--accent);
   transform: translate(2px, -2px);
 }
+
+.socials__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.socials a .socials__label .icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-3);
+}
+
+.socials a:hover .socials__label .icon {
+  color: var(--accent);
+  transform: none;
+}

@@ -6,12 +6,12 @@ Everything below can run on free tiers. The only possible recurring cost is the 
 
 ## Current state
 
-- **Deployed:** <https://shivanshtri010.github.io/portfolio-shivansh/> — GitHub Pages, Actions source, HTTPS enforced. The repository is public and its homepage points at this URL.
-- The site deploys to the default project URL, **`https://shivanshtri010.github.io/portfolio-shivansh/`**.
+- **Deployed:** <https://shivanshtri010.github.io/> — GitHub Pages, Actions source, HTTPS enforced. The repository is public and its homepage points at this URL.
 - PostHog is **configured** in `assets/js/config.js` (US cloud project, consent-gated); `cloudflareToken` is still **empty**. With a key set, the consent banner appears, and no analytics script loads or network request leaves the page until the visitor chooses **Allow analytics**. If both keys are empty again, the banner is skipped entirely and the site works normally.
 - There is **no `CNAME` file** and **no custom domain** configured yet. Do not create one until the domain is registered and ready; the deployment workflow only copies a `CNAME` file if one exists.
-- `404.html` uses `<base href="/portfolio-shivansh/">` so its fonts, styles and links resolve from any missing sub-path. Change this to `/` when the custom domain goes live, or the 404 page will look for assets under the old project path.
-- The absolute URLs in `index.html`, `privacy.html`, `sitemap.xml`, `robots.txt` and `config.js` point at the GitHub Pages URL above. They must all change together when the domain goes live (section 4.3).
+- The site is a **user site**: the repository is named `shivanshtri010.github.io`, so Pages serves it from the domain root. Project-subpath configuration (such as a `/portfolio-shivansh/` base path) is no longer needed anywhere.
+- `404.html` uses `<base href="/">`, which is correct for the root-served user site and stays correct if a custom domain is added later.
+- The absolute URLs in `index.html`, `privacy.html`, `sitemap.xml`, `robots.txt` and `config.js` point at `https://shivanshtri010.github.io`. They must all change together when the domain goes live (section 4.3).
 
 ---
 
@@ -24,17 +24,17 @@ The repository must exist before the first push. Choose one route.
 ```powershell
 winget install --id GitHub.cli
 gh auth login          # GitHub.com → HTTPS → login with a browser
-gh repo create portfolio-shivansh --public --source . --remote origin --push
+gh repo create shivanshtri010.github.io --public --source . --remote origin --push
 ```
 
 ### Route B — create it in the browser
 
 1. Open <https://github.com/new>.
-2. Name it **`portfolio-shivansh`**, set visibility to **Public**, and do **not** add a README, `.gitignore` or licence (the local repo already has content).
+2. Name it **`shivanshtri010.github.io`**, set visibility to **Public**, and do **not** add a README, `.gitignore` or licence (the local repo already has content).
 3. Create the repository, then from this folder:
 
 ```powershell
-git remote add origin https://github.com/shivanshtri010/portfolio-shivansh.git
+git remote add origin https://github.com/shivanshtri010/shivanshtri010.github.io.git
 git branch -M main
 git push -u origin main
 ```
@@ -62,7 +62,7 @@ The workflow uploads only the site files (`index.html`, `privacy.html`, `404.htm
 The first deploy should be available at:
 
 ```
-https://shivanshtri010.github.io/portfolio-shivansh/
+https://shivanshtri010.github.io/
 ```
 
 Every path in the site is relative, so it works both at that subpath and at a custom apex domain.
@@ -73,9 +73,9 @@ Every path in the site is relative, so it works both at that subpath and at a cu
 
 Once the workflow is green:
 
-1. Open `https://shivanshtri010.github.io/portfolio-shivansh/`.
+1. Open `https://shivanshtri010.github.io/`.
 2. Confirm the page loads over HTTPS with no console errors.
-3. Check `https://shivanshtri010.github.io/portfolio-shivansh/robots.txt` and `/sitemap.xml`.
+3. Check `https://shivanshtri010.github.io/robots.txt` and `/sitemap.xml`.
 4. Open the deployed URL in a private window. With the analytics keys empty, **no consent banner should appear** and the DevTools Network tab should show no requests to `posthog.com` or `cloudflareinsights.com`.
 5. Test the mobile menu, a case study toggle, the résumé download, the email copy button and the privacy link.
 6. Run Lighthouse on the live URL and record the four scores.

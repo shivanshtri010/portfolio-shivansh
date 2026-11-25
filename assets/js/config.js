@@ -10,7 +10,7 @@
 window.PORTFOLIO_CONFIG = {
   // Used by documentation and future absolute links. Update alongside
   // the canonical URL in index.html when the custom domain is live.
-  siteUrl: "https://shivanshtri010.github.io/portfolio-shivansh",
+  siteUrl: "https://shivanshtri010.github.io",
 
   // PostHog → Project settings → Project API key (public).
   // Example: "phc_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

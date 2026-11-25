@@ -815,12 +815,20 @@ body.menu-open {
 }
 
 .mobile-menu__socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: var(--text-3);
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
   transition: color 0.3s var(--ease-soft);
+}
+
+.mobile-menu__socials a .icon {
+  width: 12px;
+  height: 12px;
 }
 
 .mobile-menu__socials a:hover {

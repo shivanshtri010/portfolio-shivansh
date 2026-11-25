@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Update this URL when the custom domain is connected.
-Sitemap: https://shivanshtri010.github.io/portfolio-shivansh/sitemap.xml
+Sitemap: https://shivanshtri010.github.io/sitemap.xml
