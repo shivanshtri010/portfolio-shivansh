@@ -270,6 +270,11 @@
       return;
     }
 
+    if (href.indexOf("https://instagram.com/") === 0 || href.indexOf("https://www.instagram.com/") === 0) {
+      capture("instagram_clicked", { source: source });
+      return;
+    }
+
     if (href.indexOf("mailto:") === 0) {
       var isConversation = link.classList.contains("btn");
       capture(isConversation ? "contact_clicked" : "email_clicked", {

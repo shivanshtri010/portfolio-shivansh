@@ -234,6 +234,7 @@ Check the current free-tier limits before enabling long replay retention. Limits
 | `resume_downloaded` | Any resume PDF link is used | `source` |
 | `github_repository_clicked` | A GitHub link is used | `source`, `project_name` when inside a project |
 | `linkedin_clicked` | A LinkedIn link is used | `source` |
+| `instagram_clicked` | An Instagram link is used | `source` |
 | `email_clicked` | The email address link is used | `method`, `source` |
 | `email_copied` | The copy-email button is used | `source` |
 | `contact_clicked` | “Let’s talk”, “Start a conversation”, or the phone link | `method`, `source` |
