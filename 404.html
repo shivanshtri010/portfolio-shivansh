@@ -231,6 +231,17 @@
 
   <script>
     document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    /* The site moved from /portfolio-shivansh/ to the account root.
+       Send legacy links to the equivalent path instead of showing 404. */
+    (function () {
+      var legacy = "/portfolio-shivansh/";
+      var path = window.location.pathname;
+      if (path.indexOf(legacy) === 0) {
+        var rest = path.slice(legacy.length);
+        window.location.replace("/" + rest + window.location.search + window.location.hash);
+      }
+    })();
   </script>
 </body>
 </html>
