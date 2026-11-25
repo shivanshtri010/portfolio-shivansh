@@ -1713,3 +1713,52 @@ rect.d-fill {
   color: var(--accent);
   transform: none;
 }
+
+/* ---------- Brand-coloured social icons ---------- */
+
+.icon--brand {
+  border-radius: 6px;
+  background: var(--brand-bg, #2a2a32);
+  color: var(--brand-fg, #fff);
+}
+
+.icon--linkedin {
+  --brand-bg: #0a66c2;
+  --brand-fg: #fff;
+}
+
+.icon--github {
+  --brand-bg: #f4f5f6;
+  --brand-fg: #16181d;
+}
+
+.icon--leetcode {
+  --brand-bg: #ffa116;
+  --brand-fg: #171717;
+}
+
+.icon--instagram {
+  --brand-bg: radial-gradient(circle at 32% 108%, #fdf497 0%, #fdf497 6%, #fd5949 44%, #d6249f 62%, #285aeb 94%);
+  --brand-fg: #fff;
+}
+
+.socials a .socials__label .icon.icon--brand {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  color: var(--brand-fg);
+  background: var(--brand-bg);
+}
+
+.socials a:hover .socials__label .icon.icon--brand {
+  color: var(--brand-fg);
+  transform: translateY(-1px);
+}
+
+.mobile-menu__socials a .icon.icon--brand {
+  width: 18px;
+  height: 18px;
+  padding: 2.5px;
+  color: var(--brand-fg);
+  background: var(--brand-bg);
+}
